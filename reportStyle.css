@@ -1,0 +1,100 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text color for contrast */
+    padding: 20px;
+}
+
+.card {
+    background-color: #1e1e1e; /* Darker shade for card background */
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Stronger shadow for depth */
+    margin-bottom: 20px;
+    padding: 15px;
+    color: #ffffff; /* White text on dark backgrounds */
+}
+
+.test-case-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #bb86fc; /* Light purple for titles, for a bit of color */
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.col {
+    flex: 1;
+    margin-right: 10px;
+}
+
+pre {
+    background-color: #242424; /* Slightly lighter gray for pre blocks */
+    border: 1px solid #333333; /* Dark border */
+    padding: 10px;
+    overflow-x: auto;
+    white-space: pre-wrap; /* Wrap long lines */
+    word-break: break-all;
+    color: #b0b0b0; /* Light gray text for readability */
+}
+
+.test-case-footer {
+    font-weight: bold;
+    margin-top: 10px;
+    color: #f2f2f2; /* Slightly off-white for less harsh contrast */
+}
+
+.merge-suggestion {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #333366; /* Dark blue background */
+    color: #d1c4e9; /* Light purple text */
+    border-radius: 4px;
+}
+
+.same-step {
+    color: #bb86fc; /* Same color as the title */
+}
+
+.threshold-input {
+    margin-bottom: 20px;
+    color: #bb86fc; /* Match the title color */
+}
+
+.threshold-input label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.threshold-input input {
+    border: 1px solid #333333; /* Dark border */
+    background-color: #1e1e1e; /* Dark background */
+    color: #ffffff; /* White text */
+    border-radius: 4px;
+    padding: 5px 10px;
+    width: 100px;
+    -webkit-appearance: none; /* Removes default webkit styles */
+    -moz-appearance: textfield; /* Removes the spinner from Firefox */
+}
+
+/* For Webkit browsers like Chrome, Safari */
+.threshold-input input::-webkit-outer-spin-button,
+.threshold-input input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* For Firefox */
+.threshold-input input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+.threshold-input small {
+    display: block;
+    color: #cccccc;
+    margin-top: 5px;
+}

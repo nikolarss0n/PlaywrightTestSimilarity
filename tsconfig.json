@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "module": "es2022",
+        "target": "es2017",
+        "downlevelIteration": true,
+        "esModuleInterop": true,
+        "noImplicitAny": true,
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "outDir": "dist",
+        "baseUrl": ".",
+        "paths": {
+            "*": [
+                "node_modules/*"
+            ]
+        },
+        "lib": ["dom", "es6"],
+    },
+    "include": [
+        "*.ts"
+, "reportScript.js"    ]
+}
