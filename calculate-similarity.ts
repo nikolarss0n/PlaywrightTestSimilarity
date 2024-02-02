@@ -118,11 +118,6 @@ async function main() {
     const filtered_tests = tests.filter((test) => test.testSteps.length >= 5);
     const tests_tuples: [string, string[]][] = filtered_tests.map((test) => [test.testId, test.testSteps]);
 
-    // Optionally write to debug.json in a development environment
-    if (process.env.NODE_ENV === "development") {
-      fs.writeFileSync("debug.json", JSON.stringify(tests_tuples, null, 4));
-    }
-
     const report: {
       "Test 1": { Name: string; Steps: string[] };
       "Test 2": { Name: string; Steps: string[] };
