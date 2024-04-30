@@ -1,0 +1,1230 @@
+Starting Scenario: Verify sidebar elements in the Dealer Portal
+2024-03-29T21:55:33.507Z pw:api => browserType.launch started
+2024-03-29T21:55:33.678Z pw:api <= browserType.launch succeeded
+2024-03-29T21:55:33.680Z pw:api => browser.newPage started
+2024-03-29T21:55:33.721Z pw:api <= browser.newPage succeeded
+2024-03-29T21:55:33.721Z pw:api => page.setViewportSize started
+2024-03-29T21:55:33.722Z pw:api <= page.setViewportSize succeeded
+.2024-03-29T21:55:33.723Z pw:api => page.goto started
+2024-03-29T21:55:33.723Z pw:api navigating to "https://dealerportal-hyundai.integration.test.or.sixt-leasing.com/", waiting until "load"
+2024-03-29T21:55:34.288Z pw:api   "commit" event fired
+2024-03-29T21:55:34.288Z pw:api   navigated to "https://dealer-hyundai-auth-integration-test.auth.eu-central-1.amazoncognito.com/login?response_type=code&client_id=4ga7182hgrrkefchbsbqapvs9t&redirect_uri=https%3A%2F%2Fdealerportal-hyundai.integration.test.or.sixt-leasing.com%2Fauth%2Ftoken&state=dc59e1e3c10da6975c2f31854c4615ae73ffd54d44aaa05c26c3e6fedd538fc4&scope=email%20openid%20profile"
+2024-03-29T21:55:34.621Z pw:api   "domcontentloaded" event fired
+2024-03-29T21:55:34.622Z pw:api   "load" event fired
+2024-03-29T21:55:34.622Z pw:api <= page.goto succeeded
+.2024-03-29T21:55:34.623Z pw:api => locator.fill started
+2024-03-29T21:55:34.624Z pw:api waiting for locator('role=textbox[name=\'Username\']')
+2024-03-29T21:55:34.636Z pw:api   locator resolved to <input type="text" required="" name="username" autocapi…/>
+2024-03-29T21:55:34.637Z pw:api   fill("tu-dealerportal-01@allane.com")
+2024-03-29T21:55:34.637Z pw:api attempting fill action
+2024-03-29T21:55:34.637Z pw:api   waiting for element to be visible, enabled and editable
+2024-03-29T21:55:34.649Z pw:api <= locator.fill succeeded
+2024-03-29T21:55:34.649Z pw:api => locator.fill started
+2024-03-29T21:55:34.649Z pw:api waiting for locator('role=textbox[name=\'Password\']')
+2024-03-29T21:55:34.651Z pw:api   locator resolved to <input required="" name="password" type="password" plac…/>
+2024-03-29T21:55:34.653Z pw:api   fill("DefaultPassword!1")
+2024-03-29T21:55:34.653Z pw:api attempting fill action
+2024-03-29T21:55:34.653Z pw:api   waiting for element to be visible, enabled and editable
+2024-03-29T21:55:34.689Z pw:api <= locator.fill succeeded
+2024-03-29T21:55:34.690Z pw:api => locator.click started
+2024-03-29T21:55:34.690Z pw:api waiting for locator('role=button[name=\'submit\']')
+2024-03-29T21:55:34.691Z pw:api   locator resolved to <input type="Submit" value="Sign in" aria-label="submit…/>
+2024-03-29T21:55:34.691Z pw:api attempting click action
+2024-03-29T21:55:34.692Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:34.706Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:34.707Z pw:api   scrolling into view if needed
+2024-03-29T21:55:34.707Z pw:api   done scrolling
+2024-03-29T21:55:34.708Z pw:api   performing click action
+2024-03-29T21:55:34.718Z pw:api   click action done
+2024-03-29T21:55:34.718Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:35.573Z pw:api   "commit" event fired
+2024-03-29T21:55:35.573Z pw:api   navigated to "https://dealerportal-hyundai.integration.test.or.sixt-leasing.com/"
+2024-03-29T21:55:35.573Z pw:api   navigated to "https://dealerportal-hyundai.integration.test.or.sixt-leasing.com/"
+2024-03-29T21:55:35.574Z pw:api   navigations have finished
+2024-03-29T21:55:35.574Z pw:api <= locator.click succeeded
+.2024-03-29T21:55:35.577Z pw:api => locator._expect started
+2024-03-29T21:55:35.578Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:35.579Z pw:api waiting for locator('[data-e2e="nav-create-offer"]')
+2024-03-29T21:55:35.890Z pw:api   "domcontentloaded" event fired
+2024-03-29T21:55:35.956Z pw:api   navigated to "https://dealerportal-hyundai.integration.test.or.sixt-leasing.com/home"
+2024-03-29T21:55:35.957Z pw:api   locator resolved to <a _ngcontent-ng-c510513231="" data-e2e="nav-create…>Angebot erstellen</a>
+2024-03-29T21:55:35.957Z pw:api <= locator._expect succeeded
+.2024-03-29T21:55:35.958Z pw:api => locator.click started
+2024-03-29T21:55:35.959Z pw:api => locator._expect started
+2024-03-29T21:55:35.959Z pw:api waiting for locator('[data-e2e="nav-create-offer"]')
+2024-03-29T21:55:35.959Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:35.960Z pw:api waiting for locator('header > h3')
+2024-03-29T21:55:35.961Z pw:api   locator resolved to <a _ngcontent-ng-c510513231="" data-e2e="nav-create…>Angebot erstellen</a>
+2024-03-29T21:55:35.961Z pw:api attempting click action
+2024-03-29T21:55:35.961Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:35.973Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:35.973Z pw:api   scrolling into view if needed
+2024-03-29T21:55:35.973Z pw:api   done scrolling
+2024-03-29T21:55:35.974Z pw:api   <div class="app-pre-spinner">…</div> intercepts pointer events
+2024-03-29T21:55:35.974Z pw:api retrying click action, attempt #1
+2024-03-29T21:55:35.974Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:35.990Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:35.990Z pw:api   scrolling into view if needed
+2024-03-29T21:55:35.990Z pw:api   done scrolling
+2024-03-29T21:55:35.991Z pw:api   <div class="app-pre-spinner">…</div> intercepts pointer events
+2024-03-29T21:55:35.991Z pw:api retrying click action, attempt #2
+2024-03-29T21:55:35.991Z pw:api   waiting 20ms
+2024-03-29T21:55:36.011Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:36.016Z pw:api   "load" event fired
+2024-03-29T21:55:36.023Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:36.023Z pw:api   scrolling into view if needed
+2024-03-29T21:55:36.023Z pw:api   done scrolling
+2024-03-29T21:55:36.024Z pw:api   <div class="app-pre-spinner">…</div> intercepts pointer events
+2024-03-29T21:55:36.024Z pw:api retrying click action, attempt #3
+2024-03-29T21:55:36.024Z pw:api   waiting 100ms
+2024-03-29T21:55:36.125Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:36.140Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:36.140Z pw:api   scrolling into view if needed
+2024-03-29T21:55:36.140Z pw:api   done scrolling
+2024-03-29T21:55:36.141Z pw:api   <div class="app-pre-spinner">…</div> intercepts pointer events
+2024-03-29T21:55:36.141Z pw:api retrying click action, attempt #4
+2024-03-29T21:55:36.141Z pw:api   waiting 100ms
+2024-03-29T21:55:36.242Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:36.257Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:36.257Z pw:api   scrolling into view if needed
+2024-03-29T21:55:36.257Z pw:api   done scrolling
+2024-03-29T21:55:36.258Z pw:api   performing click action
+2024-03-29T21:55:36.296Z pw:api   click action done
+2024-03-29T21:55:36.296Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:36.297Z pw:api   navigations have finished
+2024-03-29T21:55:36.298Z pw:api <= locator.click succeeded
+2024-03-29T21:55:36.315Z pw:api   locator resolved to <h3 _ngcontent-ng-c2284329775="">Neues Angebot</h3>
+2024-03-29T21:55:36.315Z pw:api <= locator._expect succeeded
+2024-03-29T21:55:36.315Z pw:api => locator.click started
+2024-03-29T21:55:36.316Z pw:api waiting for locator('[name=\'modelId\']')
+2024-03-29T21:55:36.317Z pw:api   locator resolved to <mat-select tabindex="0" name="modelId" role="combobox" id="…>…</mat-select>
+2024-03-29T21:55:36.317Z pw:api attempting click action
+2024-03-29T21:55:36.317Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:36.332Z pw:api   element is not stable
+2024-03-29T21:55:36.332Z pw:api retrying click action, attempt #1
+2024-03-29T21:55:36.332Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:36.349Z pw:api   element is not stable
+2024-03-29T21:55:36.349Z pw:api retrying click action, attempt #2
+2024-03-29T21:55:36.349Z pw:api   waiting 20ms
+2024-03-29T21:55:36.371Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:36.381Z pw:api   element is not stable
+2024-03-29T21:55:36.381Z pw:api retrying click action, attempt #3
+2024-03-29T21:55:36.381Z pw:api   waiting 100ms
+2024-03-29T21:55:36.484Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:36.504Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:36.504Z pw:api   scrolling into view if needed
+2024-03-29T21:55:36.505Z pw:api   done scrolling
+2024-03-29T21:55:36.506Z pw:api   performing click action
+2024-03-29T21:55:36.516Z pw:api   click action done
+2024-03-29T21:55:36.516Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:36.517Z pw:api   navigations have finished
+2024-03-29T21:55:36.517Z pw:api <= locator.click succeeded
+2024-03-29T21:55:36.517Z pw:api => locator.click started
+2024-03-29T21:55:36.518Z pw:api waiting for getByRole('option', { name: 'IONIQ 6' })
+2024-03-29T21:55:36.597Z pw:api   locator resolved to <mat-option role="option" title="IONIQ 6" id="mat-option-30"…>…</mat-option>
+2024-03-29T21:55:36.597Z pw:api attempting click action
+2024-03-29T21:55:36.597Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:36.607Z pw:api   element is not stable
+2024-03-29T21:55:36.607Z pw:api retrying click action, attempt #1
+2024-03-29T21:55:36.607Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:36.623Z pw:api   element is not stable
+2024-03-29T21:55:36.623Z pw:api retrying click action, attempt #2
+2024-03-29T21:55:36.623Z pw:api   waiting 20ms
+2024-03-29T21:55:36.644Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:36.657Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:36.657Z pw:api   scrolling into view if needed
+2024-03-29T21:55:36.658Z pw:api   done scrolling
+2024-03-29T21:55:36.659Z pw:api   performing click action
+2024-03-29T21:55:36.669Z pw:api   click action done
+2024-03-29T21:55:36.670Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:36.670Z pw:api   navigations have finished
+2024-03-29T21:55:36.670Z pw:api <= locator.click succeeded
+2024-03-29T21:55:36.671Z pw:api => locator.click started
+2024-03-29T21:55:36.671Z pw:api waiting for locator('[name=\'horsePower\']')
+2024-03-29T21:55:36.672Z pw:api   locator resolved to <mat-select tabindex="-1" role="combobox" name="horsePower" …>…</mat-select>
+2024-03-29T21:55:36.673Z pw:api attempting click action
+2024-03-29T21:55:36.673Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:36.690Z pw:api   element is not enabled
+2024-03-29T21:55:36.690Z pw:api retrying click action, attempt #1
+2024-03-29T21:55:36.690Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:36.706Z pw:api   element is not enabled
+2024-03-29T21:55:36.707Z pw:api retrying click action, attempt #2
+2024-03-29T21:55:36.707Z pw:api   waiting 20ms
+2024-03-29T21:55:36.728Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:36.740Z pw:api   element is not enabled
+2024-03-29T21:55:36.740Z pw:api retrying click action, attempt #3
+2024-03-29T21:55:36.740Z pw:api   waiting 100ms
+2024-03-29T21:55:36.842Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:36.856Z pw:api   element is not enabled
+2024-03-29T21:55:36.856Z pw:api retrying click action, attempt #4
+2024-03-29T21:55:36.857Z pw:api   waiting 100ms
+2024-03-29T21:55:36.959Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:36.973Z pw:api   element is not enabled
+2024-03-29T21:55:36.973Z pw:api retrying click action, attempt #5
+2024-03-29T21:55:36.973Z pw:api   waiting 500ms
+2024-03-29T21:55:37.476Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:37.490Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:37.490Z pw:api   scrolling into view if needed
+2024-03-29T21:55:37.491Z pw:api   done scrolling
+2024-03-29T21:55:37.494Z pw:api   performing click action
+2024-03-29T21:55:37.503Z pw:api   click action done
+2024-03-29T21:55:37.503Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:37.503Z pw:api   navigations have finished
+2024-03-29T21:55:37.504Z pw:api <= locator.click succeeded
+2024-03-29T21:55:37.504Z pw:api => locator.click started
+2024-03-29T21:55:37.505Z pw:api waiting for getByText('kW / 325 PS')
+2024-03-29T21:55:37.509Z pw:api   locator resolved to <span class="mdc-list-item__primary-text">…</span>
+2024-03-29T21:55:37.509Z pw:api attempting click action
+2024-03-29T21:55:37.509Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:37.523Z pw:api   element is not stable
+2024-03-29T21:55:37.523Z pw:api retrying click action, attempt #1
+2024-03-29T21:55:37.523Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:37.540Z pw:api   element is not stable
+2024-03-29T21:55:37.540Z pw:api retrying click action, attempt #2
+2024-03-29T21:55:37.540Z pw:api   waiting 20ms
+2024-03-29T21:55:37.562Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:37.573Z pw:api   element is not stable
+2024-03-29T21:55:37.573Z pw:api retrying click action, attempt #3
+2024-03-29T21:55:37.573Z pw:api   waiting 100ms
+2024-03-29T21:55:37.675Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:37.690Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:37.690Z pw:api   scrolling into view if needed
+2024-03-29T21:55:37.691Z pw:api   done scrolling
+2024-03-29T21:55:37.692Z pw:api   performing click action
+2024-03-29T21:55:37.698Z pw:api   click action done
+2024-03-29T21:55:37.698Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:37.699Z pw:api   navigations have finished
+2024-03-29T21:55:37.699Z pw:api <= locator.click succeeded
+2024-03-29T21:55:37.700Z pw:api => page.waitForResponse started
+2024-03-29T21:55:37.702Z pw:api => locator.click started
+2024-03-29T21:55:37.702Z pw:api waiting for getByRole('button', { name: 'Weiter zur Konfiguration' })
+2024-03-29T21:55:37.704Z pw:api   locator resolved to <button disabled data-e2e="create-lead" _ngcontent-ng-c2…> Weiter zur Konfiguration </button>
+2024-03-29T21:55:37.705Z pw:api attempting click action
+2024-03-29T21:55:37.705Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:37.716Z pw:api   element is not enabled
+2024-03-29T21:55:37.716Z pw:api retrying click action, attempt #1
+2024-03-29T21:55:37.716Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:37.731Z pw:api   element is not enabled
+2024-03-29T21:55:37.731Z pw:api retrying click action, attempt #2
+2024-03-29T21:55:37.731Z pw:api   waiting 20ms
+2024-03-29T21:55:37.753Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:37.766Z pw:api   element is not enabled
+2024-03-29T21:55:37.766Z pw:api retrying click action, attempt #3
+2024-03-29T21:55:37.766Z pw:api   waiting 100ms
+2024-03-29T21:55:37.768Z pw:api   "networkidle" event fired
+2024-03-29T21:55:37.868Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:37.882Z pw:api   element is not enabled
+2024-03-29T21:55:37.882Z pw:api retrying click action, attempt #4
+2024-03-29T21:55:37.882Z pw:api   waiting 100ms
+2024-03-29T21:55:37.984Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:37.999Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:37.999Z pw:api   scrolling into view if needed
+2024-03-29T21:55:37.999Z pw:api   done scrolling
+2024-03-29T21:55:38.000Z pw:api   performing click action
+2024-03-29T21:55:38.008Z pw:api   click action done
+2024-03-29T21:55:38.008Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:38.009Z pw:api   navigations have finished
+2024-03-29T21:55:38.009Z pw:api <= locator.click succeeded
+2024-03-29T21:55:38.208Z pw:api   navigated to "https://dealerportal-hyundai.integration.test.or.sixt-leasing.com/lead/offer/834902320221111--1/vehicle"
+2024-03-29T21:55:38.901Z pw:api <= page.waitForResponse succeeded
+.2024-03-29T21:55:38.903Z pw:api => locator.click started
+2024-03-29T21:55:38.906Z pw:api waiting for getByRole('link', { name: ' Antragsteller' })
+2024-03-29T21:55:38.911Z pw:api   locator resolved to <a _ngcontent-ng-c2986275727="" href="/lead/offer/8…>…</a>
+2024-03-29T21:55:38.912Z pw:api attempting click action
+2024-03-29T21:55:38.912Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:38.923Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:38.923Z pw:api   scrolling into view if needed
+2024-03-29T21:55:38.923Z pw:api   done scrolling
+2024-03-29T21:55:38.925Z pw:api   <dt _ngcontent-ng-c1098476481="">Türen</dt> from <div class="flex-grow-1" _ngcontent-ng-c556062456="">…</div> subtree intercepts pointer events
+2024-03-29T21:55:38.925Z pw:api retrying click action, attempt #1
+2024-03-29T21:55:38.925Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:38.940Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:38.940Z pw:api   scrolling into view if needed
+2024-03-29T21:55:38.940Z pw:api   done scrolling
+2024-03-29T21:55:38.942Z pw:api   performing click action
+2024-03-29T21:55:38.947Z pw:api   navigated to "https://dealerportal-hyundai.integration.test.or.sixt-leasing.com/lead/offer/834902320221111--1/customer/profile"
+2024-03-29T21:55:38.961Z pw:api   click action done
+2024-03-29T21:55:38.961Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:38.962Z pw:api   navigations have finished
+2024-03-29T21:55:38.962Z pw:api <= locator.click succeeded
+2024-03-29T21:55:38.963Z pw:api => locator.fill started
+2024-03-29T21:55:38.963Z pw:api waiting for getByPlaceholder('Suche')
+2024-03-29T21:55:38.964Z pw:api   locator resolved to <input placeholder="Suche" _ngcontent-ng-c598695846="" …/>
+2024-03-29T21:55:38.965Z pw:api   fill("Mock DP Privatkunde")
+2024-03-29T21:55:38.965Z pw:api attempting fill action
+2024-03-29T21:55:38.965Z pw:api   waiting for element to be visible, enabled and editable
+2024-03-29T21:55:38.967Z pw:api <= locator.fill succeeded
+2024-03-29T21:55:38.967Z pw:api => locator.press started
+2024-03-29T21:55:38.968Z pw:api waiting for getByPlaceholder('Suche')
+2024-03-29T21:55:38.968Z pw:api   locator resolved to <input placeholder="Suche" _ngcontent-ng-c598695846="" …/>
+2024-03-29T21:55:38.969Z pw:api elementHandle.press("Enter")
+2024-03-29T21:55:38.975Z pw:api <= locator.press succeeded
+2024-03-29T21:55:38.975Z pw:api => locator.click started
+2024-03-29T21:55:38.976Z pw:api waiting for locator('[data-e2e="search-button"]')
+2024-03-29T21:55:38.976Z pw:api   locator resolved to <button type="button" data-e2e="search-button" _ngconten…>…</button>
+2024-03-29T21:55:38.977Z pw:api attempting click action
+2024-03-29T21:55:38.977Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:38.990Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:38.990Z pw:api   scrolling into view if needed
+2024-03-29T21:55:38.991Z pw:api   done scrolling
+2024-03-29T21:55:38.992Z pw:api   performing click action
+2024-03-29T21:55:38.993Z pw:api   click action done
+2024-03-29T21:55:38.993Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:38.994Z pw:api   navigations have finished
+2024-03-29T21:55:38.994Z pw:api <= locator.click succeeded
+2024-03-29T21:55:38.994Z pw:api => locator._expect started
+2024-03-29T21:55:38.994Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:38.995Z pw:api waiting for locator('or-grid-row')
+2024-03-29T21:55:39.854Z pw:api   locator resolved to <or-grid-row level="0" class="ng-star-inserted">…</or-grid-row>
+2024-03-29T21:55:39.855Z pw:api <= locator._expect succeeded
+2024-03-29T21:55:39.856Z pw:api => locator.click started
+2024-03-29T21:55:39.859Z pw:api waiting for getByText('Kunde zuordnen')
+2024-03-29T21:55:39.863Z pw:api   locator resolved to <a _ngcontent-ng-c598695846="" class="assign-custom…>…</a>
+2024-03-29T21:55:39.863Z pw:api attempting click action
+2024-03-29T21:55:39.863Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:39.874Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:39.874Z pw:api   scrolling into view if needed
+2024-03-29T21:55:39.874Z pw:api   done scrolling
+2024-03-29T21:55:39.875Z pw:api   performing click action
+2024-03-29T21:55:39.879Z pw:api   click action done
+2024-03-29T21:55:39.879Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:39.879Z pw:api   navigations have finished
+2024-03-29T21:55:39.879Z pw:api <= locator.click succeeded
+.2024-03-29T21:55:40.892Z pw:api => page.goto started
+2024-03-29T21:55:40.893Z pw:api navigating to "https://leila.integration.test.or.sixt-leasing.com/", waiting until "load"
+2024-03-29T21:55:41.356Z pw:api   "commit" event fired
+2024-03-29T21:55:41.356Z pw:api   navigated to "https://mock-authentication-ui.integration.test.or.sixt-leasing.com/login?redirect_uri=https%3A%2F%2Fauth.integration.test.or.sixt-leasing.com%2Flogin&state=2VlHxg&wiremock_uri=https%3A%2F%2Fmock-authentication.integration.test.or.sixt-leasing.com"
+2024-03-29T21:55:41.357Z pw:api   "domcontentloaded" event fired
+2024-03-29T21:55:41.358Z pw:api   "load" event fired
+2024-03-29T21:55:41.358Z pw:api <= page.goto succeeded
+.2024-03-29T21:55:41.360Z pw:api => locator.fill started
+2024-03-29T21:55:41.360Z pw:api waiting for locator('#username')
+2024-03-29T21:55:41.369Z pw:api   locator resolved to <input type="text" id="username" name="username" placeh…/>
+2024-03-29T21:55:41.369Z pw:api   fill("leila2-admin-tst")
+2024-03-29T21:55:41.369Z pw:api attempting fill action
+2024-03-29T21:55:41.369Z pw:api   waiting for element to be visible, enabled and editable
+2024-03-29T21:55:41.371Z pw:api <= locator.fill succeeded
+2024-03-29T21:55:41.371Z pw:api => locator.click started
+2024-03-29T21:55:41.372Z pw:api waiting for locator('#loginButton')
+2024-03-29T21:55:41.373Z pw:api   locator resolved to <input type="button" id="loginbutton" name="loginbutton…/>
+2024-03-29T21:55:41.373Z pw:api attempting click action
+2024-03-29T21:55:41.373Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:41.390Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:41.390Z pw:api   scrolling into view if needed
+2024-03-29T21:55:41.390Z pw:api   done scrolling
+2024-03-29T21:55:41.391Z pw:api   performing click action
+2024-03-29T21:55:41.803Z pw:api   click action done
+2024-03-29T21:55:41.803Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:41.803Z pw:api   "commit" event fired
+2024-03-29T21:55:41.803Z pw:api   navigated to "https://leila.integration.test.or.sixt-leasing.com/"
+2024-03-29T21:55:41.803Z pw:api   navigated to "https://leila.integration.test.or.sixt-leasing.com/"
+2024-03-29T21:55:41.805Z pw:api   navigations have finished
+2024-03-29T21:55:41.806Z pw:api <= locator.click succeeded
+.2024-03-29T21:55:41.807Z pw:api => locator._expect started
+2024-03-29T21:55:41.807Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:41.808Z pw:api waiting for locator('[data-e2e=\'dashboard-open-leads\']')
+2024-03-29T21:55:42.070Z pw:api   "domcontentloaded" event fired
+2024-03-29T21:55:42.071Z pw:api   "load" event fired
+2024-03-29T21:55:42.355Z pw:api   navigated to "https://leila.integration.test.or.sixt-leasing.com/user/dashboard"
+2024-03-29T21:55:43.679Z pw:api   locator resolved to <statistical-value-badge _nghost-ng-c197468540="" data-e2e="dashboard-ope…>…</statistical-value-badge>
+2024-03-29T21:55:43.679Z pw:api <= locator._expect succeeded
+.https://leila.integration.test.or.sixt-leasing.com/cap/process/HC94LTXN6/processing-progress
+2024-03-29T21:55:43.680Z pw:api => page.goto started
+2024-03-29T21:55:43.680Z pw:api navigating to "https://leila.integration.test.or.sixt-leasing.com/cap/process/HC94LTXN6/processing-progress", waiting until "load"
+2024-03-29T21:55:43.736Z pw:api   "commit" event fired
+2024-03-29T21:55:43.736Z pw:api   navigated to "https://leila.integration.test.or.sixt-leasing.com/cap/process/HC94LTXN6/processing-progress"
+2024-03-29T21:55:43.860Z pw:api   "domcontentloaded" event fired
+2024-03-29T21:55:43.861Z pw:api   "load" event fired
+2024-03-29T21:55:43.861Z pw:api <= page.goto succeeded
+.2024-03-29T21:55:43.861Z pw:api => locator.click started
+2024-03-29T21:55:43.861Z pw:api waiting for locator('.toggle-open')
+2024-03-29T21:55:44.043Z pw:api   locator resolved to <div class="toggle-open" _ngcontent-ng-c3127493637="">…</div>
+2024-03-29T21:55:44.043Z pw:api attempting click action
+2024-03-29T21:55:44.043Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:44.056Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:44.056Z pw:api   scrolling into view if needed
+2024-03-29T21:55:44.056Z pw:api   done scrolling
+2024-03-29T21:55:44.057Z pw:api   <div class="col page-content">…</div> intercepts pointer events
+2024-03-29T21:55:44.057Z pw:api retrying click action, attempt #1
+2024-03-29T21:55:44.057Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:44.073Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:44.073Z pw:api   scrolling into view if needed
+2024-03-29T21:55:44.073Z pw:api   done scrolling
+2024-03-29T21:55:44.074Z pw:api   element is outside of the viewport
+2024-03-29T21:55:44.074Z pw:api retrying click action, attempt #2
+2024-03-29T21:55:44.074Z pw:api   waiting 20ms
+2024-03-29T21:55:44.105Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:44.123Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:44.123Z pw:api   scrolling into view if needed
+2024-03-29T21:55:44.123Z pw:api   done scrolling
+2024-03-29T21:55:44.124Z pw:api   <div class="col page-content">…</div> intercepts pointer events
+2024-03-29T21:55:44.124Z pw:api retrying click action, attempt #3
+2024-03-29T21:55:44.124Z pw:api   waiting 100ms
+2024-03-29T21:55:44.225Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:44.240Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:44.240Z pw:api   scrolling into view if needed
+2024-03-29T21:55:44.240Z pw:api   done scrolling
+2024-03-29T21:55:44.241Z pw:api   <div class="col page-content">…</div> intercepts pointer events
+2024-03-29T21:55:44.241Z pw:api retrying click action, attempt #4
+2024-03-29T21:55:44.241Z pw:api   waiting 100ms
+2024-03-29T21:55:44.306Z pw:api   navigated to "https://leila.integration.test.or.sixt-leasing.com/cap/process/HC94LTXN6/processing-progress"
+2024-03-29T21:55:44.343Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:44.355Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:44.355Z pw:api   scrolling into view if needed
+2024-03-29T21:55:44.356Z pw:api   done scrolling
+2024-03-29T21:55:44.357Z pw:api   <div _ngcontent-ng-c1160640275="" class="global-block…>…</div> from <div class="col page-content">…</div> subtree intercepts pointer events
+2024-03-29T21:55:44.357Z pw:api retrying click action, attempt #5
+2024-03-29T21:55:44.357Z pw:api   waiting 500ms
+2024-03-29T21:55:44.859Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:44.873Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:44.873Z pw:api   scrolling into view if needed
+2024-03-29T21:55:44.874Z pw:api   done scrolling
+2024-03-29T21:55:44.876Z pw:api   <div _ngcontent-ng-c1160640275="" class="global-block…>…</div> from <div class="col page-content">…</div> subtree intercepts pointer events
+2024-03-29T21:55:44.876Z pw:api retrying click action, attempt #6
+2024-03-29T21:55:44.876Z pw:api   waiting 500ms
+2024-03-29T21:55:45.379Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:45.391Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:45.391Z pw:api   scrolling into view if needed
+2024-03-29T21:55:45.392Z pw:api   done scrolling
+2024-03-29T21:55:45.395Z pw:api   performing click action
+2024-03-29T21:55:45.406Z pw:api   click action done
+2024-03-29T21:55:45.407Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:45.407Z pw:api   navigations have finished
+2024-03-29T21:55:45.407Z pw:api <= locator.click succeeded
+.2024-03-29T21:55:45.409Z pw:api => locator._expect started
+2024-03-29T21:55:45.409Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:45.409Z pw:api waiting for locator('[title="Kunden & Vorgänge"]')
+2024-03-29T21:55:45.411Z pw:api   locator resolved to <a href="/cap" class="link-back" title="Kunden & Vo…>…</a>
+2024-03-29T21:55:45.411Z pw:api <= locator._expect succeeded
+2024-03-29T21:55:45.412Z pw:api => locator._expect started
+2024-03-29T21:55:45.412Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:45.412Z pw:api waiting for locator('[title="Bearbeitungsfortschritt"]')
+2024-03-29T21:55:45.413Z pw:api   locator resolved to <a class="active-link" title="Bearbeitungsfortschri…>…</a>
+2024-03-29T21:55:45.414Z pw:api <= locator._expect succeeded
+2024-03-29T21:55:45.414Z pw:api => locator._expect started
+2024-03-29T21:55:45.414Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:45.414Z pw:api waiting for locator('[title="Fahrzeug & Ausstattung"]')
+2024-03-29T21:55:45.416Z pw:api   locator resolved to <a title="Fahrzeug & Ausstattung" href="/cap/proces…>…</a>
+2024-03-29T21:55:45.416Z pw:api <= locator._expect succeeded
+2024-03-29T21:55:45.416Z pw:api => locator._expect started
+2024-03-29T21:55:45.417Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:45.417Z pw:api waiting for locator('[title="Kalkulation"]')
+2024-03-29T21:55:45.417Z pw:api   locator resolved to <a title="Kalkulation" href="/cap/process/HC94LTXN6…>…</a>
+2024-03-29T21:55:45.418Z pw:api <= locator._expect succeeded
+2024-03-29T21:55:45.418Z pw:api => locator._expect started
+2024-03-29T21:55:45.418Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:45.418Z pw:api waiting for locator('[title="Service-Produkte"]')
+2024-03-29T21:55:45.419Z pw:api   locator resolved to <a title="Service-Produkte" href="/cap/process/HC94…>…</a>
+2024-03-29T21:55:45.419Z pw:api <= locator._expect succeeded
+2024-03-29T21:55:45.420Z pw:api => locator._expect started
+2024-03-29T21:55:45.420Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:45.420Z pw:api waiting for locator('[title="Auslieferung & Übergabe"]')
+2024-03-29T21:55:45.421Z pw:api   locator resolved to <a title="Auslieferung & Übergabe" href="/cap/proce…>…</a>
+2024-03-29T21:55:45.421Z pw:api <= locator._expect succeeded
+2024-03-29T21:55:45.421Z pw:api => locator._expect started
+2024-03-29T21:55:45.421Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:45.421Z pw:api waiting for locator('[title="Bonitätsprüfung"]')
+2024-03-29T21:55:45.422Z pw:api   locator resolved to <a title="Bonitätsprüfung" href="/cap/process/HC94L…>…</a>
+2024-03-29T21:55:45.422Z pw:api <= locator._expect succeeded
+2024-03-29T21:55:45.423Z pw:api => locator._expect started
+2024-03-29T21:55:45.424Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:45.424Z pw:api waiting for locator('[title="Dokumente"]')
+2024-03-29T21:55:45.424Z pw:api   locator resolved to <a title="Dokumente" href="/cap/process/HC94LTXN6/d…>…</a>
+2024-03-29T21:55:45.425Z pw:api <= locator._expect succeeded
+.2024-03-29T21:55:45.425Z pw:api => page.close started
+2024-03-29T21:55:45.430Z pw:api <= page.close succeeded
+2024-03-29T21:55:45.431Z pw:api => browser.close started
+2024-03-29T21:55:45.452Z pw:api <= browser.close succeeded
+.Starting Scenario: Compare car data in cap with dp
+2024-03-29T21:55:45.453Z pw:api => browserType.launch started
+2024-03-29T21:55:45.572Z pw:api <= browserType.launch succeeded
+2024-03-29T21:55:45.575Z pw:api => browser.newPage started
+2024-03-29T21:55:45.611Z pw:api <= browser.newPage succeeded
+2024-03-29T21:55:45.612Z pw:api => page.setViewportSize started
+2024-03-29T21:55:45.612Z pw:api <= page.setViewportSize succeeded
+.2024-03-29T21:55:45.613Z pw:api => page.goto started
+2024-03-29T21:55:45.613Z pw:api navigating to "https://dealerportal-hyundai.integration.test.or.sixt-leasing.com/", waiting until "load"
+2024-03-29T21:55:45.911Z pw:api   "commit" event fired
+2024-03-29T21:55:45.911Z pw:api   navigated to "https://dealer-hyundai-auth-integration-test.auth.eu-central-1.amazoncognito.com/login?response_type=code&client_id=4ga7182hgrrkefchbsbqapvs9t&redirect_uri=https%3A%2F%2Fdealerportal-hyundai.integration.test.or.sixt-leasing.com%2Fauth%2Ftoken&state=17e963a9ec8bda3bda2c9781686a0f67f33836a5169c206811096e8eed7c0928&scope=email%20openid%20profile"
+2024-03-29T21:55:46.189Z pw:api   "domcontentloaded" event fired
+2024-03-29T21:55:46.190Z pw:api   "load" event fired
+2024-03-29T21:55:46.190Z pw:api <= page.goto succeeded
+.2024-03-29T21:55:46.190Z pw:api => locator.fill started
+2024-03-29T21:55:46.191Z pw:api waiting for locator('role=textbox[name=\'Username\']')
+2024-03-29T21:55:46.202Z pw:api   locator resolved to <input type="text" required="" name="username" autocapi…/>
+2024-03-29T21:55:46.203Z pw:api   fill("tu-dealerportal-01@allane.com")
+2024-03-29T21:55:46.203Z pw:api attempting fill action
+2024-03-29T21:55:46.203Z pw:api   waiting for element to be visible, enabled and editable
+2024-03-29T21:55:46.216Z pw:api <= locator.fill succeeded
+2024-03-29T21:55:46.217Z pw:api => locator.fill started
+2024-03-29T21:55:46.217Z pw:api waiting for locator('role=textbox[name=\'Password\']')
+2024-03-29T21:55:46.218Z pw:api   locator resolved to <input required="" name="password" type="password" plac…/>
+2024-03-29T21:55:46.219Z pw:api   fill("DefaultPassword!1")
+2024-03-29T21:55:46.219Z pw:api attempting fill action
+2024-03-29T21:55:46.219Z pw:api   waiting for element to be visible, enabled and editable
+2024-03-29T21:55:46.262Z pw:api <= locator.fill succeeded
+2024-03-29T21:55:46.262Z pw:api => locator.click started
+2024-03-29T21:55:46.262Z pw:api waiting for locator('role=button[name=\'submit\']')
+2024-03-29T21:55:46.264Z pw:api   locator resolved to <input type="Submit" value="Sign in" aria-label="submit…/>
+2024-03-29T21:55:46.264Z pw:api attempting click action
+2024-03-29T21:55:46.264Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:46.281Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:46.282Z pw:api   scrolling into view if needed
+2024-03-29T21:55:46.282Z pw:api   done scrolling
+2024-03-29T21:55:46.283Z pw:api   performing click action
+2024-03-29T21:55:46.294Z pw:api   click action done
+2024-03-29T21:55:46.294Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:46.963Z pw:api   "commit" event fired
+2024-03-29T21:55:46.964Z pw:api   navigated to "https://dealerportal-hyundai.integration.test.or.sixt-leasing.com/"
+2024-03-29T21:55:46.964Z pw:api   navigated to "https://dealerportal-hyundai.integration.test.or.sixt-leasing.com/"
+2024-03-29T21:55:46.965Z pw:api   navigations have finished
+2024-03-29T21:55:46.965Z pw:api <= locator.click succeeded
+.2024-03-29T21:55:46.966Z pw:api => locator._expect started
+2024-03-29T21:55:46.967Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:46.967Z pw:api waiting for locator('[data-e2e="nav-create-offer"]')
+2024-03-29T21:55:47.265Z pw:api   "domcontentloaded" event fired
+2024-03-29T21:55:47.330Z pw:api   navigated to "https://dealerportal-hyundai.integration.test.or.sixt-leasing.com/home"
+2024-03-29T21:55:47.332Z pw:api   locator resolved to <a _ngcontent-ng-c510513231="" data-e2e="nav-create…>Angebot erstellen</a>
+2024-03-29T21:55:47.333Z pw:api <= locator._expect succeeded
+.2024-03-29T21:55:47.333Z pw:api => locator.click started
+2024-03-29T21:55:47.333Z pw:api => locator._expect started
+2024-03-29T21:55:47.334Z pw:api waiting for locator('[data-e2e="nav-create-offer"]')
+2024-03-29T21:55:47.334Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:47.334Z pw:api waiting for locator('header > h3')
+2024-03-29T21:55:47.335Z pw:api   locator resolved to <a _ngcontent-ng-c510513231="" data-e2e="nav-create…>Angebot erstellen</a>
+2024-03-29T21:55:47.335Z pw:api attempting click action
+2024-03-29T21:55:47.335Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:47.348Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:47.348Z pw:api   scrolling into view if needed
+2024-03-29T21:55:47.348Z pw:api   done scrolling
+2024-03-29T21:55:47.349Z pw:api   <div class="app-pre-spinner">…</div> intercepts pointer events
+2024-03-29T21:55:47.349Z pw:api retrying click action, attempt #1
+2024-03-29T21:55:47.349Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:47.365Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:47.365Z pw:api   scrolling into view if needed
+2024-03-29T21:55:47.365Z pw:api   done scrolling
+2024-03-29T21:55:47.365Z pw:api   <div class="app-pre-spinner">…</div> intercepts pointer events
+2024-03-29T21:55:47.365Z pw:api retrying click action, attempt #2
+2024-03-29T21:55:47.365Z pw:api   waiting 20ms
+2024-03-29T21:55:47.386Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:47.391Z pw:api   "load" event fired
+2024-03-29T21:55:47.398Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:47.398Z pw:api   scrolling into view if needed
+2024-03-29T21:55:47.399Z pw:api   done scrolling
+2024-03-29T21:55:47.399Z pw:api   <div class="app-pre-spinner">…</div> intercepts pointer events
+2024-03-29T21:55:47.399Z pw:api retrying click action, attempt #3
+2024-03-29T21:55:47.399Z pw:api   waiting 100ms
+2024-03-29T21:55:47.501Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:47.514Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:47.515Z pw:api   scrolling into view if needed
+2024-03-29T21:55:47.515Z pw:api   done scrolling
+2024-03-29T21:55:47.516Z pw:api   <div class="app-pre-spinner">…</div> intercepts pointer events
+2024-03-29T21:55:47.516Z pw:api retrying click action, attempt #4
+2024-03-29T21:55:47.516Z pw:api   waiting 100ms
+2024-03-29T21:55:47.617Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:47.631Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:47.631Z pw:api   scrolling into view if needed
+2024-03-29T21:55:47.632Z pw:api   done scrolling
+2024-03-29T21:55:47.633Z pw:api   performing click action
+2024-03-29T21:55:47.670Z pw:api   click action done
+2024-03-29T21:55:47.670Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:47.672Z pw:api   navigations have finished
+2024-03-29T21:55:47.672Z pw:api <= locator.click succeeded
+2024-03-29T21:55:47.688Z pw:api   locator resolved to <h3 _ngcontent-ng-c2284329775="">Neues Angebot</h3>
+2024-03-29T21:55:47.688Z pw:api <= locator._expect succeeded
+2024-03-29T21:55:47.689Z pw:api => locator.click started
+2024-03-29T21:55:47.689Z pw:api waiting for locator('[name=\'modelId\']')
+2024-03-29T21:55:47.690Z pw:api   locator resolved to <mat-select tabindex="0" name="modelId" role="combobox" id="…>…</mat-select>
+2024-03-29T21:55:47.690Z pw:api attempting click action
+2024-03-29T21:55:47.690Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:47.706Z pw:api   element is not stable
+2024-03-29T21:55:47.706Z pw:api retrying click action, attempt #1
+2024-03-29T21:55:47.706Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:47.722Z pw:api   element is not stable
+2024-03-29T21:55:47.722Z pw:api retrying click action, attempt #2
+2024-03-29T21:55:47.722Z pw:api   waiting 20ms
+2024-03-29T21:55:47.745Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:47.756Z pw:api   element is not stable
+2024-03-29T21:55:47.756Z pw:api retrying click action, attempt #3
+2024-03-29T21:55:47.756Z pw:api   waiting 100ms
+2024-03-29T21:55:47.858Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:47.873Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:47.873Z pw:api   scrolling into view if needed
+2024-03-29T21:55:47.874Z pw:api   done scrolling
+2024-03-29T21:55:47.875Z pw:api   performing click action
+2024-03-29T21:55:47.880Z pw:api   click action done
+2024-03-29T21:55:47.880Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:47.881Z pw:api   navigations have finished
+2024-03-29T21:55:47.881Z pw:api <= locator.click succeeded
+2024-03-29T21:55:47.881Z pw:api => locator.click started
+2024-03-29T21:55:47.881Z pw:api waiting for getByRole('option', { name: 'IONIQ 6' })
+2024-03-29T21:55:47.959Z pw:api   locator resolved to <mat-option role="option" title="IONIQ 6" id="mat-option-34"…>…</mat-option>
+2024-03-29T21:55:47.959Z pw:api attempting click action
+2024-03-29T21:55:47.959Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:47.973Z pw:api   element is not stable
+2024-03-29T21:55:47.973Z pw:api retrying click action, attempt #1
+2024-03-29T21:55:47.973Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:47.990Z pw:api   element is not stable
+2024-03-29T21:55:47.990Z pw:api retrying click action, attempt #2
+2024-03-29T21:55:47.990Z pw:api   waiting 20ms
+2024-03-29T21:55:48.011Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:48.023Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:48.023Z pw:api   scrolling into view if needed
+2024-03-29T21:55:48.023Z pw:api   done scrolling
+2024-03-29T21:55:48.024Z pw:api   performing click action
+2024-03-29T21:55:48.033Z pw:api   click action done
+2024-03-29T21:55:48.033Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:48.033Z pw:api   navigations have finished
+2024-03-29T21:55:48.034Z pw:api <= locator.click succeeded
+2024-03-29T21:55:48.034Z pw:api => locator.click started
+2024-03-29T21:55:48.034Z pw:api waiting for locator('[name=\'horsePower\']')
+2024-03-29T21:55:48.035Z pw:api   locator resolved to <mat-select tabindex="-1" role="combobox" name="horsePower" …>…</mat-select>
+2024-03-29T21:55:48.035Z pw:api attempting click action
+2024-03-29T21:55:48.035Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:48.048Z pw:api   element is not enabled
+2024-03-29T21:55:48.048Z pw:api retrying click action, attempt #1
+2024-03-29T21:55:48.048Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:48.064Z pw:api   element is not enabled
+2024-03-29T21:55:48.065Z pw:api retrying click action, attempt #2
+2024-03-29T21:55:48.065Z pw:api   waiting 20ms
+2024-03-29T21:55:48.085Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:48.098Z pw:api   element is not enabled
+2024-03-29T21:55:48.098Z pw:api retrying click action, attempt #3
+2024-03-29T21:55:48.098Z pw:api   waiting 100ms
+2024-03-29T21:55:48.200Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:48.215Z pw:api   element is not enabled
+2024-03-29T21:55:48.215Z pw:api retrying click action, attempt #4
+2024-03-29T21:55:48.215Z pw:api   waiting 100ms
+2024-03-29T21:55:48.317Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:48.331Z pw:api   element is not enabled
+2024-03-29T21:55:48.331Z pw:api retrying click action, attempt #5
+2024-03-29T21:55:48.331Z pw:api   waiting 500ms
+2024-03-29T21:55:48.834Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:48.849Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:48.849Z pw:api   scrolling into view if needed
+2024-03-29T21:55:48.851Z pw:api   done scrolling
+2024-03-29T21:55:48.855Z pw:api   performing click action
+2024-03-29T21:55:48.870Z pw:api   click action done
+2024-03-29T21:55:48.870Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:48.871Z pw:api   navigations have finished
+2024-03-29T21:55:48.871Z pw:api <= locator.click succeeded
+2024-03-29T21:55:48.872Z pw:api => locator.click started
+2024-03-29T21:55:48.872Z pw:api waiting for getByText('kW / 325 PS')
+2024-03-29T21:55:48.877Z pw:api   locator resolved to <span class="mdc-list-item__primary-text">…</span>
+2024-03-29T21:55:48.877Z pw:api attempting click action
+2024-03-29T21:55:48.877Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:48.890Z pw:api   element is not stable
+2024-03-29T21:55:48.890Z pw:api retrying click action, attempt #1
+2024-03-29T21:55:48.890Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:48.906Z pw:api   element is not stable
+2024-03-29T21:55:48.906Z pw:api retrying click action, attempt #2
+2024-03-29T21:55:48.906Z pw:api   waiting 20ms
+2024-03-29T21:55:48.928Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:48.940Z pw:api   element is not stable
+2024-03-29T21:55:48.940Z pw:api retrying click action, attempt #3
+2024-03-29T21:55:48.940Z pw:api   waiting 100ms
+2024-03-29T21:55:49.042Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:49.057Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:49.057Z pw:api   scrolling into view if needed
+2024-03-29T21:55:49.057Z pw:api   done scrolling
+2024-03-29T21:55:49.059Z pw:api   performing click action
+2024-03-29T21:55:49.068Z pw:api   click action done
+2024-03-29T21:55:49.068Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:49.069Z pw:api   navigations have finished
+2024-03-29T21:55:49.069Z pw:api <= locator.click succeeded
+2024-03-29T21:55:49.069Z pw:api => page.waitForResponse started
+2024-03-29T21:55:49.071Z pw:api => locator.click started
+2024-03-29T21:55:49.072Z pw:api waiting for getByRole('button', { name: 'Weiter zur Konfiguration' })
+2024-03-29T21:55:49.076Z pw:api   locator resolved to <button disabled data-e2e="create-lead" _ngcontent-ng-c2…> Weiter zur Konfiguration </button>
+2024-03-29T21:55:49.076Z pw:api attempting click action
+2024-03-29T21:55:49.076Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:49.089Z pw:api   element is not enabled
+2024-03-29T21:55:49.089Z pw:api retrying click action, attempt #1
+2024-03-29T21:55:49.089Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:49.107Z pw:api   element is not enabled
+2024-03-29T21:55:49.107Z pw:api retrying click action, attempt #2
+2024-03-29T21:55:49.107Z pw:api   waiting 20ms
+2024-03-29T21:55:49.130Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:49.141Z pw:api   element is not enabled
+2024-03-29T21:55:49.141Z pw:api retrying click action, attempt #3
+2024-03-29T21:55:49.141Z pw:api   waiting 100ms
+2024-03-29T21:55:49.243Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:49.258Z pw:api   element is not enabled
+2024-03-29T21:55:49.258Z pw:api retrying click action, attempt #4
+2024-03-29T21:55:49.258Z pw:api   waiting 100ms
+2024-03-29T21:55:49.364Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:49.382Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:49.382Z pw:api   scrolling into view if needed
+2024-03-29T21:55:49.382Z pw:api   done scrolling
+2024-03-29T21:55:49.384Z pw:api   performing click action
+2024-03-29T21:55:49.394Z pw:api   click action done
+2024-03-29T21:55:49.394Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:49.394Z pw:api   navigations have finished
+2024-03-29T21:55:49.394Z pw:api <= locator.click succeeded
+2024-03-29T21:55:49.593Z pw:api   navigated to "https://dealerportal-hyundai.integration.test.or.sixt-leasing.com/lead/offer/834902320221111--1/vehicle"
+2024-03-29T21:55:50.229Z pw:api <= page.waitForResponse succeeded
+.2024-03-29T21:55:50.229Z pw:api => locator.click started
+2024-03-29T21:55:50.230Z pw:api waiting for getByRole('link', { name: ' Antragsteller' })
+2024-03-29T21:55:50.238Z pw:api   locator resolved to <a _ngcontent-ng-c2986275727="" href="/lead/offer/8…>…</a>
+2024-03-29T21:55:50.239Z pw:api attempting click action
+2024-03-29T21:55:50.239Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:50.248Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:50.248Z pw:api   scrolling into view if needed
+2024-03-29T21:55:50.249Z pw:api   done scrolling
+2024-03-29T21:55:50.250Z pw:api   <dt _ngcontent-ng-c1098476481="">Türen</dt> from <div class="flex-grow-1" _ngcontent-ng-c556062456="">…</div> subtree intercepts pointer events
+2024-03-29T21:55:50.250Z pw:api retrying click action, attempt #1
+2024-03-29T21:55:50.250Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:50.265Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:50.265Z pw:api   scrolling into view if needed
+2024-03-29T21:55:50.265Z pw:api   done scrolling
+2024-03-29T21:55:50.267Z pw:api   performing click action
+2024-03-29T21:55:50.272Z pw:api   navigated to "https://dealerportal-hyundai.integration.test.or.sixt-leasing.com/lead/offer/834902320221111--1/customer/profile"
+2024-03-29T21:55:50.288Z pw:api   click action done
+2024-03-29T21:55:50.288Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:50.288Z pw:api   navigations have finished
+2024-03-29T21:55:50.288Z pw:api <= locator.click succeeded
+2024-03-29T21:55:50.289Z pw:api => locator.fill started
+2024-03-29T21:55:50.289Z pw:api waiting for getByPlaceholder('Suche')
+2024-03-29T21:55:50.291Z pw:api   locator resolved to <input placeholder="Suche" _ngcontent-ng-c598695846="" …/>
+2024-03-29T21:55:50.291Z pw:api   fill("Mock DP Privatkunde")
+2024-03-29T21:55:50.291Z pw:api attempting fill action
+2024-03-29T21:55:50.291Z pw:api   waiting for element to be visible, enabled and editable
+2024-03-29T21:55:50.293Z pw:api <= locator.fill succeeded
+2024-03-29T21:55:50.293Z pw:api => locator.press started
+2024-03-29T21:55:50.293Z pw:api waiting for getByPlaceholder('Suche')
+2024-03-29T21:55:50.294Z pw:api   locator resolved to <input placeholder="Suche" _ngcontent-ng-c598695846="" …/>
+2024-03-29T21:55:50.295Z pw:api elementHandle.press("Enter")
+2024-03-29T21:55:50.302Z pw:api <= locator.press succeeded
+2024-03-29T21:55:50.302Z pw:api => locator.click started
+2024-03-29T21:55:50.303Z pw:api waiting for locator('[data-e2e="search-button"]')
+2024-03-29T21:55:50.305Z pw:api   locator resolved to <button type="button" data-e2e="search-button" _ngconten…>…</button>
+2024-03-29T21:55:50.305Z pw:api attempting click action
+2024-03-29T21:55:50.305Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:50.315Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:50.315Z pw:api   scrolling into view if needed
+2024-03-29T21:55:50.316Z pw:api   done scrolling
+2024-03-29T21:55:50.316Z pw:api   performing click action
+2024-03-29T21:55:50.319Z pw:api   click action done
+2024-03-29T21:55:50.319Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:50.319Z pw:api   navigations have finished
+2024-03-29T21:55:50.319Z pw:api <= locator.click succeeded
+2024-03-29T21:55:50.320Z pw:api => locator._expect started
+2024-03-29T21:55:50.320Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:50.320Z pw:api waiting for locator('or-grid-row')
+2024-03-29T21:55:51.176Z pw:api   locator resolved to <or-grid-row level="0" class="ng-star-inserted">…</or-grid-row>
+2024-03-29T21:55:51.176Z pw:api <= locator._expect succeeded
+2024-03-29T21:55:51.178Z pw:api => locator.click started
+2024-03-29T21:55:51.178Z pw:api waiting for getByText('Kunde zuordnen')
+2024-03-29T21:55:51.181Z pw:api   locator resolved to <a _ngcontent-ng-c598695846="" class="assign-custom…>…</a>
+2024-03-29T21:55:51.182Z pw:api attempting click action
+2024-03-29T21:55:51.182Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:51.198Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:51.198Z pw:api   scrolling into view if needed
+2024-03-29T21:55:51.199Z pw:api   done scrolling
+2024-03-29T21:55:51.200Z pw:api   performing click action
+2024-03-29T21:55:51.204Z pw:api   click action done
+2024-03-29T21:55:51.204Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:51.204Z pw:api   navigations have finished
+2024-03-29T21:55:51.204Z pw:api <= locator.click succeeded
+.2024-03-29T21:55:52.170Z pw:api => locator.click started
+2024-03-29T21:55:52.170Z pw:api => locator._expect started
+2024-03-29T21:55:52.171Z pw:api waiting for getByRole('link', { name: ' Fahrzeug' })
+2024-03-29T21:55:52.171Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:52.171Z pw:api waiting for locator('dp-vehicle-model-information')
+2024-03-29T21:55:52.175Z pw:api   locator resolved to <a _ngcontent-ng-c2986275727="" href="/lead/offer/8…>…</a>
+2024-03-29T21:55:52.175Z pw:api attempting click action
+2024-03-29T21:55:52.175Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:52.190Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:52.190Z pw:api   scrolling into view if needed
+2024-03-29T21:55:52.190Z pw:api   done scrolling
+2024-03-29T21:55:52.191Z pw:api   performing click action
+2024-03-29T21:55:52.194Z pw:api   navigated to "https://dealerportal-hyundai.integration.test.or.sixt-leasing.com/lead/offer/834902320221111--1/vehicle"
+2024-03-29T21:55:52.204Z pw:api   click action done
+2024-03-29T21:55:52.204Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:52.204Z pw:api   navigations have finished
+2024-03-29T21:55:52.204Z pw:api <= locator.click succeeded
+2024-03-29T21:55:52.281Z pw:api   locator resolved to <dp-vehicle-model-information _nghost-ng-c1098476481="" _ngcontent-ng-c2795381…>…</dp-vehicle-model-information>
+2024-03-29T21:55:52.281Z pw:api <= locator._expect succeeded
+.2024-03-29T21:55:52.282Z pw:api => locator._expect started
+2024-03-29T21:55:52.282Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:52.282Z pw:api waiting for locator('dp-vehicle-model-information')
+2024-03-29T21:55:52.286Z pw:api   locator resolved to <dp-vehicle-model-information _nghost-ng-c1098476481="" _ngcontent-ng-c2795381…>…</dp-vehicle-model-information>
+2024-03-29T21:55:52.286Z pw:api <= locator._expect succeeded
+2024-03-29T21:55:52.286Z pw:api => locator._expect started
+2024-03-29T21:55:52.286Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:52.286Z pw:api waiting for locator('dp-vehicle-model-information')
+2024-03-29T21:55:52.287Z pw:api   locator resolved to <dp-vehicle-model-information _nghost-ng-c1098476481="" _ngcontent-ng-c2795381…>…</dp-vehicle-model-information>
+2024-03-29T21:55:52.287Z pw:api <= locator._expect succeeded
+2024-03-29T21:55:52.288Z pw:api => locator._expect started
+2024-03-29T21:55:52.288Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:52.288Z pw:api waiting for locator('dp-vehicle-model-information')
+2024-03-29T21:55:52.288Z pw:api   locator resolved to <dp-vehicle-model-information _nghost-ng-c1098476481="" _ngcontent-ng-c2795381…>…</dp-vehicle-model-information>
+2024-03-29T21:55:52.288Z pw:api <= locator._expect succeeded
+.2024-03-29T21:55:52.289Z pw:api => page.goto started
+2024-03-29T21:55:52.290Z pw:api navigating to "https://leila.integration.test.or.sixt-leasing.com/", waiting until "load"
+2024-03-29T21:55:52.552Z pw:api   "commit" event fired
+2024-03-29T21:55:52.552Z pw:api   navigated to "https://mock-authentication-ui.integration.test.or.sixt-leasing.com/login?redirect_uri=https%3A%2F%2Fauth.integration.test.or.sixt-leasing.com%2Flogin&state=bhQtAi&wiremock_uri=https%3A%2F%2Fmock-authentication.integration.test.or.sixt-leasing.com"
+2024-03-29T21:55:52.553Z pw:api   "domcontentloaded" event fired
+2024-03-29T21:55:52.555Z pw:api   "load" event fired
+2024-03-29T21:55:52.555Z pw:api <= page.goto succeeded
+.2024-03-29T21:55:52.557Z pw:api => locator.fill started
+2024-03-29T21:55:52.557Z pw:api waiting for locator('#username')
+2024-03-29T21:55:52.569Z pw:api   locator resolved to <input type="text" id="username" name="username" placeh…/>
+2024-03-29T21:55:52.569Z pw:api   fill("leila2-admin-tst")
+2024-03-29T21:55:52.569Z pw:api attempting fill action
+2024-03-29T21:55:52.569Z pw:api   waiting for element to be visible, enabled and editable
+2024-03-29T21:55:52.571Z pw:api <= locator.fill succeeded
+2024-03-29T21:55:52.572Z pw:api => locator.click started
+2024-03-29T21:55:52.572Z pw:api waiting for locator('#loginButton')
+2024-03-29T21:55:52.574Z pw:api   locator resolved to <input type="button" id="loginbutton" name="loginbutton…/>
+2024-03-29T21:55:52.574Z pw:api attempting click action
+2024-03-29T21:55:52.574Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:52.589Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:52.589Z pw:api   scrolling into view if needed
+2024-03-29T21:55:52.590Z pw:api   done scrolling
+2024-03-29T21:55:52.591Z pw:api   performing click action
+2024-03-29T21:55:53.003Z pw:api   click action done
+2024-03-29T21:55:53.003Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:53.003Z pw:api   "commit" event fired
+2024-03-29T21:55:53.003Z pw:api   navigated to "https://leila.integration.test.or.sixt-leasing.com/"
+2024-03-29T21:55:53.003Z pw:api   navigated to "https://leila.integration.test.or.sixt-leasing.com/"
+2024-03-29T21:55:53.005Z pw:api   navigations have finished
+2024-03-29T21:55:53.005Z pw:api <= locator.click succeeded
+.2024-03-29T21:55:53.006Z pw:api => locator._expect started
+2024-03-29T21:55:53.006Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:53.007Z pw:api waiting for locator('[data-e2e=\'dashboard-open-leads\']')
+2024-03-29T21:55:53.272Z pw:api   "domcontentloaded" event fired
+2024-03-29T21:55:53.312Z pw:api   "load" event fired
+2024-03-29T21:55:53.558Z pw:api   navigated to "https://leila.integration.test.or.sixt-leasing.com/user/dashboard"
+2024-03-29T21:55:54.874Z pw:api   locator resolved to <statistical-value-badge _nghost-ng-c197468540="" data-e2e="dashboard-ope…>…</statistical-value-badge>
+2024-03-29T21:55:54.875Z pw:api <= locator._expect succeeded
+.https://leila.integration.test.or.sixt-leasing.com/cap/process/HDSE5S6G9/processing-progress
+2024-03-29T21:55:54.876Z pw:api => page.goto started
+2024-03-29T21:55:54.876Z pw:api navigating to "https://leila.integration.test.or.sixt-leasing.com/cap/process/HDSE5S6G9/processing-progress", waiting until "load"
+2024-03-29T21:55:54.935Z pw:api   "commit" event fired
+2024-03-29T21:55:54.935Z pw:api   navigated to "https://leila.integration.test.or.sixt-leasing.com/cap/process/HDSE5S6G9/processing-progress"
+2024-03-29T21:55:55.065Z pw:api   "domcontentloaded" event fired
+2024-03-29T21:55:55.065Z pw:api   "load" event fired
+2024-03-29T21:55:55.065Z pw:api <= page.goto succeeded
+.2024-03-29T21:55:55.065Z pw:api => locator._expect started
+2024-03-29T21:55:55.065Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:55.065Z pw:api waiting for locator('dealer-vehicle-details')
+2024-03-29T21:55:55.513Z pw:api   navigated to "https://leila.integration.test.or.sixt-leasing.com/cap/process/HDSE5S6G9/processing-progress"
+2024-03-29T21:55:55.930Z pw:api   locator resolved to <dealer-vehicle-details class="col d-block" _nghost-ng-c402259711="" _ng…>…</dealer-vehicle-details>
+2024-03-29T21:55:55.930Z pw:api <= locator._expect succeeded
+2024-03-29T21:55:55.931Z pw:api => locator._expect started
+2024-03-29T21:55:55.932Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:55.932Z pw:api waiting for locator('dealer-vehicle-details')
+2024-03-29T21:55:55.933Z pw:api   locator resolved to <dealer-vehicle-details class="col d-block" _nghost-ng-c402259711="" _ng…>…</dealer-vehicle-details>
+2024-03-29T21:55:55.933Z pw:api <= locator._expect succeeded
+.2024-03-29T21:55:55.933Z pw:api => page.close started
+2024-03-29T21:55:55.938Z pw:api <= page.close succeeded
+2024-03-29T21:55:55.939Z pw:api => browser.close started
+2024-03-29T21:55:55.957Z pw:api <= browser.close succeeded
+.Starting Scenario: Compare Cost Overview
+2024-03-29T21:55:55.958Z pw:api => browserType.launch started
+2024-03-29T21:55:56.067Z pw:api <= browserType.launch succeeded
+2024-03-29T21:55:56.067Z pw:api => browser.newPage started
+2024-03-29T21:55:56.113Z pw:api <= browser.newPage succeeded
+2024-03-29T21:55:56.113Z pw:api => page.setViewportSize started
+2024-03-29T21:55:56.114Z pw:api <= page.setViewportSize succeeded
+.2024-03-29T21:55:56.114Z pw:api => page.goto started
+2024-03-29T21:55:56.115Z pw:api navigating to "https://dealerportal-hyundai.integration.test.or.sixt-leasing.com/", waiting until "load"
+2024-03-29T21:55:56.415Z pw:api   "commit" event fired
+2024-03-29T21:55:56.415Z pw:api   navigated to "https://dealer-hyundai-auth-integration-test.auth.eu-central-1.amazoncognito.com/login?response_type=code&client_id=4ga7182hgrrkefchbsbqapvs9t&redirect_uri=https%3A%2F%2Fdealerportal-hyundai.integration.test.or.sixt-leasing.com%2Fauth%2Ftoken&state=0a7b9ebf42c562630496c3dfa7855044e7b63eba089bd1c3e5b214a39ec8d284&scope=email%20openid%20profile"
+2024-03-29T21:55:56.692Z pw:api   "domcontentloaded" event fired
+2024-03-29T21:55:56.693Z pw:api   "load" event fired
+2024-03-29T21:55:56.693Z pw:api <= page.goto succeeded
+.2024-03-29T21:55:56.693Z pw:api => locator.fill started
+2024-03-29T21:55:56.693Z pw:api waiting for locator('role=textbox[name=\'Username\']')
+2024-03-29T21:55:56.704Z pw:api   locator resolved to <input type="text" required="" name="username" autocapi…/>
+2024-03-29T21:55:56.704Z pw:api   fill("tu-dealerportal-01@allane.com")
+2024-03-29T21:55:56.704Z pw:api attempting fill action
+2024-03-29T21:55:56.704Z pw:api   waiting for element to be visible, enabled and editable
+2024-03-29T21:55:56.715Z pw:api <= locator.fill succeeded
+2024-03-29T21:55:56.715Z pw:api => locator.fill started
+2024-03-29T21:55:56.715Z pw:api waiting for locator('role=textbox[name=\'Password\']')
+2024-03-29T21:55:56.716Z pw:api   locator resolved to <input required="" name="password" type="password" plac…/>
+2024-03-29T21:55:56.716Z pw:api   fill("DefaultPassword!1")
+2024-03-29T21:55:56.716Z pw:api attempting fill action
+2024-03-29T21:55:56.716Z pw:api   waiting for element to be visible, enabled and editable
+2024-03-29T21:55:56.752Z pw:api <= locator.fill succeeded
+2024-03-29T21:55:56.752Z pw:api => locator.click started
+2024-03-29T21:55:56.753Z pw:api waiting for locator('role=button[name=\'submit\']')
+2024-03-29T21:55:56.754Z pw:api   locator resolved to <input type="Submit" value="Sign in" aria-label="submit…/>
+2024-03-29T21:55:56.754Z pw:api attempting click action
+2024-03-29T21:55:56.754Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:56.765Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:56.765Z pw:api   scrolling into view if needed
+2024-03-29T21:55:56.765Z pw:api   done scrolling
+2024-03-29T21:55:56.765Z pw:api   performing click action
+2024-03-29T21:55:56.776Z pw:api   click action done
+2024-03-29T21:55:56.776Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:57.605Z pw:api   "commit" event fired
+2024-03-29T21:55:57.605Z pw:api   navigated to "https://dealerportal-hyundai.integration.test.or.sixt-leasing.com/"
+2024-03-29T21:55:57.605Z pw:api   navigated to "https://dealerportal-hyundai.integration.test.or.sixt-leasing.com/"
+2024-03-29T21:55:57.605Z pw:api   navigations have finished
+2024-03-29T21:55:57.605Z pw:api <= locator.click succeeded
+.2024-03-29T21:55:57.606Z pw:api => locator._expect started
+2024-03-29T21:55:57.606Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:57.606Z pw:api waiting for locator('[data-e2e="nav-create-offer"]')
+2024-03-29T21:55:57.911Z pw:api   "domcontentloaded" event fired
+2024-03-29T21:55:57.967Z pw:api   locator resolved to <a _ngcontent-ng-c510513231="" data-e2e="nav-create…>Angebot erstellen</a>
+2024-03-29T21:55:57.967Z pw:api <= locator._expect succeeded
+.2024-03-29T21:55:57.967Z pw:api => locator.click started
+2024-03-29T21:55:57.968Z pw:api => locator._expect started
+2024-03-29T21:55:57.968Z pw:api waiting for locator('[data-e2e="nav-create-offer"]')
+2024-03-29T21:55:57.968Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:55:57.968Z pw:api waiting for locator('header > h3')
+2024-03-29T21:55:57.969Z pw:api   locator resolved to <a _ngcontent-ng-c510513231="" data-e2e="nav-create…>Angebot erstellen</a>
+2024-03-29T21:55:57.969Z pw:api attempting click action
+2024-03-29T21:55:57.969Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:57.993Z pw:api   navigated to "https://dealerportal-hyundai.integration.test.or.sixt-leasing.com/home"
+2024-03-29T21:55:57.993Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:57.993Z pw:api   scrolling into view if needed
+2024-03-29T21:55:57.994Z pw:api   done scrolling
+2024-03-29T21:55:57.995Z pw:api   <div class="app-pre-spinner">…</div> intercepts pointer events
+2024-03-29T21:55:57.995Z pw:api retrying click action, attempt #1
+2024-03-29T21:55:57.995Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:58.006Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:58.006Z pw:api   scrolling into view if needed
+2024-03-29T21:55:58.007Z pw:api   done scrolling
+2024-03-29T21:55:58.007Z pw:api   <div class="app-pre-spinner">…</div> intercepts pointer events
+2024-03-29T21:55:58.007Z pw:api retrying click action, attempt #2
+2024-03-29T21:55:58.007Z pw:api   waiting 20ms
+2024-03-29T21:55:58.029Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:58.039Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:58.039Z pw:api   scrolling into view if needed
+2024-03-29T21:55:58.040Z pw:api   done scrolling
+2024-03-29T21:55:58.040Z pw:api   <div class="app-pre-spinner">…</div> intercepts pointer events
+2024-03-29T21:55:58.040Z pw:api retrying click action, attempt #3
+2024-03-29T21:55:58.040Z pw:api   waiting 100ms
+2024-03-29T21:55:58.142Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:58.156Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:58.156Z pw:api   scrolling into view if needed
+2024-03-29T21:55:58.157Z pw:api   done scrolling
+2024-03-29T21:55:58.157Z pw:api   <div class="app-pre-spinner">…</div> intercepts pointer events
+2024-03-29T21:55:58.158Z pw:api retrying click action, attempt #4
+2024-03-29T21:55:58.158Z pw:api   waiting 100ms
+2024-03-29T21:55:58.259Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:58.273Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:58.273Z pw:api   scrolling into view if needed
+2024-03-29T21:55:58.274Z pw:api   done scrolling
+2024-03-29T21:55:58.275Z pw:api   performing click action
+2024-03-29T21:55:58.321Z pw:api   click action done
+2024-03-29T21:55:58.321Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:58.322Z pw:api   navigations have finished
+2024-03-29T21:55:58.322Z pw:api <= locator.click succeeded
+2024-03-29T21:55:58.327Z pw:api   locator resolved to <h3 _ngcontent-ng-c2284329775="">Neues Angebot</h3>
+2024-03-29T21:55:58.327Z pw:api <= locator._expect succeeded
+2024-03-29T21:55:58.327Z pw:api => locator.click started
+2024-03-29T21:55:58.328Z pw:api waiting for locator('[name=\'modelId\']')
+2024-03-29T21:55:58.329Z pw:api   locator resolved to <mat-select tabindex="0" name="modelId" role="combobox" id="…>…</mat-select>
+2024-03-29T21:55:58.329Z pw:api attempting click action
+2024-03-29T21:55:58.329Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:58.340Z pw:api   element is not stable
+2024-03-29T21:55:58.340Z pw:api retrying click action, attempt #1
+2024-03-29T21:55:58.340Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:58.356Z pw:api   element is not stable
+2024-03-29T21:55:58.356Z pw:api retrying click action, attempt #2
+2024-03-29T21:55:58.356Z pw:api   waiting 20ms
+2024-03-29T21:55:58.378Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:58.390Z pw:api   element is not stable
+2024-03-29T21:55:58.390Z pw:api retrying click action, attempt #3
+2024-03-29T21:55:58.390Z pw:api   waiting 100ms
+2024-03-29T21:55:58.492Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:58.506Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:58.506Z pw:api   scrolling into view if needed
+2024-03-29T21:55:58.507Z pw:api   done scrolling
+2024-03-29T21:55:58.509Z pw:api   performing click action
+2024-03-29T21:55:58.538Z pw:api   click action done
+2024-03-29T21:55:58.538Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:58.538Z pw:api   navigations have finished
+2024-03-29T21:55:58.539Z pw:api <= locator.click succeeded
+2024-03-29T21:55:58.539Z pw:api => locator.click started
+2024-03-29T21:55:58.539Z pw:api waiting for getByRole('option', { name: 'IONIQ 6' })
+2024-03-29T21:55:58.651Z pw:api   "load" event fired
+2024-03-29T21:55:58.719Z pw:api   locator resolved to <mat-option role="option" title="IONIQ 6" id="mat-option-34"…>…</mat-option>
+2024-03-29T21:55:58.719Z pw:api attempting click action
+2024-03-29T21:55:58.719Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:58.731Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:58.731Z pw:api   scrolling into view if needed
+2024-03-29T21:55:58.732Z pw:api   done scrolling
+2024-03-29T21:55:58.733Z pw:api   performing click action
+2024-03-29T21:55:58.739Z pw:api   click action done
+2024-03-29T21:55:58.739Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:58.739Z pw:api   navigations have finished
+2024-03-29T21:55:58.739Z pw:api <= locator.click succeeded
+2024-03-29T21:55:58.740Z pw:api => locator.click started
+2024-03-29T21:55:58.740Z pw:api waiting for locator('[name=\'horsePower\']')
+2024-03-29T21:55:58.741Z pw:api   locator resolved to <mat-select tabindex="-1" role="combobox" name="horsePower" …>…</mat-select>
+2024-03-29T21:55:58.742Z pw:api attempting click action
+2024-03-29T21:55:58.742Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:58.757Z pw:api   element is not enabled
+2024-03-29T21:55:58.757Z pw:api retrying click action, attempt #1
+2024-03-29T21:55:58.757Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:58.773Z pw:api   element is not enabled
+2024-03-29T21:55:58.773Z pw:api retrying click action, attempt #2
+2024-03-29T21:55:58.773Z pw:api   waiting 20ms
+2024-03-29T21:55:58.798Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:58.814Z pw:api   element is not enabled
+2024-03-29T21:55:58.814Z pw:api retrying click action, attempt #3
+2024-03-29T21:55:58.814Z pw:api   waiting 100ms
+2024-03-29T21:55:58.916Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:58.931Z pw:api   element is not enabled
+2024-03-29T21:55:58.931Z pw:api retrying click action, attempt #4
+2024-03-29T21:55:58.931Z pw:api   waiting 100ms
+2024-03-29T21:55:59.034Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:59.048Z pw:api   element is not enabled
+2024-03-29T21:55:59.048Z pw:api retrying click action, attempt #5
+2024-03-29T21:55:59.048Z pw:api   waiting 500ms
+2024-03-29T21:55:59.550Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:59.564Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:59.565Z pw:api   scrolling into view if needed
+2024-03-29T21:55:59.565Z pw:api   done scrolling
+2024-03-29T21:55:59.567Z pw:api   performing click action
+2024-03-29T21:55:59.577Z pw:api   click action done
+2024-03-29T21:55:59.577Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:59.577Z pw:api   navigations have finished
+2024-03-29T21:55:59.577Z pw:api <= locator.click succeeded
+2024-03-29T21:55:59.578Z pw:api => locator.click started
+2024-03-29T21:55:59.578Z pw:api waiting for getByText('kW / 325 PS')
+2024-03-29T21:55:59.582Z pw:api   locator resolved to <span class="mdc-list-item__primary-text">…</span>
+2024-03-29T21:55:59.583Z pw:api attempting click action
+2024-03-29T21:55:59.583Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:59.598Z pw:api   element is not stable
+2024-03-29T21:55:59.598Z pw:api retrying click action, attempt #1
+2024-03-29T21:55:59.598Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:59.615Z pw:api   element is not stable
+2024-03-29T21:55:59.615Z pw:api retrying click action, attempt #2
+2024-03-29T21:55:59.615Z pw:api   waiting 20ms
+2024-03-29T21:55:59.636Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:59.648Z pw:api   element is not stable
+2024-03-29T21:55:59.648Z pw:api retrying click action, attempt #3
+2024-03-29T21:55:59.648Z pw:api   waiting 100ms
+2024-03-29T21:55:59.750Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:59.765Z pw:api   element is visible, enabled and stable
+2024-03-29T21:55:59.765Z pw:api   scrolling into view if needed
+2024-03-29T21:55:59.765Z pw:api   done scrolling
+2024-03-29T21:55:59.767Z pw:api   performing click action
+2024-03-29T21:55:59.775Z pw:api   click action done
+2024-03-29T21:55:59.775Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:55:59.775Z pw:api   navigations have finished
+2024-03-29T21:55:59.775Z pw:api <= locator.click succeeded
+2024-03-29T21:55:59.776Z pw:api => page.waitForResponse started
+2024-03-29T21:55:59.777Z pw:api => locator.click started
+2024-03-29T21:55:59.777Z pw:api waiting for getByRole('button', { name: 'Weiter zur Konfiguration' })
+2024-03-29T21:55:59.779Z pw:api   locator resolved to <button disabled data-e2e="create-lead" _ngcontent-ng-c2…> Weiter zur Konfiguration </button>
+2024-03-29T21:55:59.780Z pw:api attempting click action
+2024-03-29T21:55:59.780Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:59.790Z pw:api   element is not enabled
+2024-03-29T21:55:59.790Z pw:api retrying click action, attempt #1
+2024-03-29T21:55:59.790Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:59.806Z pw:api   element is not enabled
+2024-03-29T21:55:59.806Z pw:api retrying click action, attempt #2
+2024-03-29T21:55:59.806Z pw:api   waiting 20ms
+2024-03-29T21:55:59.828Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:59.840Z pw:api   element is not enabled
+2024-03-29T21:55:59.840Z pw:api retrying click action, attempt #3
+2024-03-29T21:55:59.840Z pw:api   waiting 100ms
+2024-03-29T21:55:59.941Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:55:59.956Z pw:api   element is not enabled
+2024-03-29T21:55:59.956Z pw:api retrying click action, attempt #4
+2024-03-29T21:55:59.956Z pw:api   waiting 100ms
+2024-03-29T21:56:00.059Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:56:00.073Z pw:api   element is not enabled
+2024-03-29T21:56:00.073Z pw:api retrying click action, attempt #5
+2024-03-29T21:56:00.073Z pw:api   waiting 500ms
+2024-03-29T21:56:00.575Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:56:00.590Z pw:api   element is visible, enabled and stable
+2024-03-29T21:56:00.591Z pw:api   scrolling into view if needed
+2024-03-29T21:56:00.591Z pw:api   done scrolling
+2024-03-29T21:56:00.593Z pw:api   performing click action
+2024-03-29T21:56:00.609Z pw:api   click action done
+2024-03-29T21:56:00.609Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:56:00.609Z pw:api   navigations have finished
+2024-03-29T21:56:00.609Z pw:api <= locator.click succeeded
+2024-03-29T21:56:02.130Z pw:api   navigated to "https://dealerportal-hyundai.integration.test.or.sixt-leasing.com/lead/offer/834902320221111--1/vehicle"
+2024-03-29T21:56:02.827Z pw:api <= page.waitForResponse succeeded
+.2024-03-29T21:56:02.828Z pw:api => locator.click started
+2024-03-29T21:56:02.829Z pw:api waiting for getByRole('link', { name: ' Antragsteller' })
+2024-03-29T21:56:02.837Z pw:api   locator resolved to <a _ngcontent-ng-c2986275727="" href="/lead/offer/8…>…</a>
+2024-03-29T21:56:02.838Z pw:api attempting click action
+2024-03-29T21:56:02.838Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:56:02.848Z pw:api   element is visible, enabled and stable
+2024-03-29T21:56:02.848Z pw:api   scrolling into view if needed
+2024-03-29T21:56:02.848Z pw:api   done scrolling
+2024-03-29T21:56:02.850Z pw:api   <dt _ngcontent-ng-c1098476481="">Türen</dt> from <div class="flex-grow-1" _ngcontent-ng-c556062456="">…</div> subtree intercepts pointer events
+2024-03-29T21:56:02.850Z pw:api retrying click action, attempt #1
+2024-03-29T21:56:02.850Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:56:02.864Z pw:api   element is visible, enabled and stable
+2024-03-29T21:56:02.864Z pw:api   scrolling into view if needed
+2024-03-29T21:56:02.865Z pw:api   done scrolling
+2024-03-29T21:56:02.866Z pw:api   performing click action
+2024-03-29T21:56:02.870Z pw:api   navigated to "https://dealerportal-hyundai.integration.test.or.sixt-leasing.com/lead/offer/834902320221111--1/customer/profile"
+2024-03-29T21:56:02.884Z pw:api   click action done
+2024-03-29T21:56:02.884Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:56:02.885Z pw:api   navigations have finished
+2024-03-29T21:56:02.885Z pw:api <= locator.click succeeded
+2024-03-29T21:56:02.885Z pw:api => locator.fill started
+2024-03-29T21:56:02.885Z pw:api waiting for getByPlaceholder('Suche')
+2024-03-29T21:56:02.886Z pw:api   locator resolved to <input placeholder="Suche" _ngcontent-ng-c598695846="" …/>
+2024-03-29T21:56:02.887Z pw:api   fill("Mock DP Privatkunde")
+2024-03-29T21:56:02.887Z pw:api attempting fill action
+2024-03-29T21:56:02.887Z pw:api   waiting for element to be visible, enabled and editable
+2024-03-29T21:56:02.888Z pw:api <= locator.fill succeeded
+2024-03-29T21:56:02.889Z pw:api => locator.press started
+2024-03-29T21:56:02.889Z pw:api waiting for getByPlaceholder('Suche')
+2024-03-29T21:56:02.890Z pw:api   locator resolved to <input placeholder="Suche" _ngcontent-ng-c598695846="" …/>
+2024-03-29T21:56:02.890Z pw:api elementHandle.press("Enter")
+2024-03-29T21:56:02.895Z pw:api <= locator.press succeeded
+2024-03-29T21:56:02.895Z pw:api => locator.click started
+2024-03-29T21:56:02.895Z pw:api waiting for locator('[data-e2e="search-button"]')
+2024-03-29T21:56:02.896Z pw:api   locator resolved to <button type="button" data-e2e="search-button" _ngconten…>…</button>
+2024-03-29T21:56:02.896Z pw:api attempting click action
+2024-03-29T21:56:02.896Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:56:02.906Z pw:api   element is visible, enabled and stable
+2024-03-29T21:56:02.906Z pw:api   scrolling into view if needed
+2024-03-29T21:56:02.907Z pw:api   done scrolling
+2024-03-29T21:56:02.907Z pw:api   performing click action
+2024-03-29T21:56:02.909Z pw:api   click action done
+2024-03-29T21:56:02.909Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:56:02.909Z pw:api   navigations have finished
+2024-03-29T21:56:02.909Z pw:api <= locator.click succeeded
+2024-03-29T21:56:02.910Z pw:api => locator._expect started
+2024-03-29T21:56:02.910Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:56:02.910Z pw:api waiting for locator('or-grid-row')
+2024-03-29T21:56:03.773Z pw:api   locator resolved to <or-grid-row level="0" class="ng-star-inserted">…</or-grid-row>
+2024-03-29T21:56:03.774Z pw:api <= locator._expect succeeded
+2024-03-29T21:56:03.776Z pw:api => locator.click started
+2024-03-29T21:56:03.777Z pw:api waiting for getByText('Kunde zuordnen')
+2024-03-29T21:56:03.780Z pw:api   locator resolved to <a _ngcontent-ng-c598695846="" class="assign-custom…>…</a>
+2024-03-29T21:56:03.781Z pw:api attempting click action
+2024-03-29T21:56:03.781Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:56:03.798Z pw:api   element is visible, enabled and stable
+2024-03-29T21:56:03.798Z pw:api   scrolling into view if needed
+2024-03-29T21:56:03.799Z pw:api   done scrolling
+2024-03-29T21:56:03.800Z pw:api   performing click action
+2024-03-29T21:56:03.804Z pw:api   click action done
+2024-03-29T21:56:03.804Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:56:03.804Z pw:api   navigations have finished
+2024-03-29T21:56:03.804Z pw:api <= locator.click succeeded
+.2024-03-29T21:56:04.799Z pw:api => page.close started
+2024-03-29T21:56:04.805Z pw:api <= page.close succeeded
+2024-03-29T21:56:04.805Z pw:api => browser.close started
+2024-03-29T21:56:04.827Z pw:api <= browser.close succeeded
+.Starting Scenario: Logging in to DealerPortal
+2024-03-29T21:56:04.828Z pw:api => browserType.launch started
+2024-03-29T21:56:04.952Z pw:api <= browserType.launch succeeded
+2024-03-29T21:56:04.953Z pw:api => browser.newPage started
+2024-03-29T21:56:04.997Z pw:api <= browser.newPage succeeded
+2024-03-29T21:56:04.997Z pw:api => page.setViewportSize started
+2024-03-29T21:56:04.998Z pw:api <= page.setViewportSize succeeded
+.2024-03-29T21:56:04.998Z pw:api => page.goto started
+2024-03-29T21:56:04.998Z pw:api navigating to "https://dealerportal-hyundai.integration.test.or.sixt-leasing.com/", waiting until "load"
+2024-03-29T21:56:05.448Z pw:api   "commit" event fired
+2024-03-29T21:56:05.448Z pw:api   navigated to "https://dealer-hyundai-auth-integration-test.auth.eu-central-1.amazoncognito.com/login?response_type=code&client_id=4ga7182hgrrkefchbsbqapvs9t&redirect_uri=https%3A%2F%2Fdealerportal-hyundai.integration.test.or.sixt-leasing.com%2Fauth%2Ftoken&state=3b7e9d70bc2b221472f065e8cd443488883d9981e3c0bd4f5dcc3781d3f818ca&scope=email%20openid%20profile"
+2024-03-29T21:56:05.827Z pw:api   "domcontentloaded" event fired
+2024-03-29T21:56:05.827Z pw:api   "load" event fired
+2024-03-29T21:56:05.827Z pw:api <= page.goto succeeded
+.2024-03-29T21:56:05.828Z pw:api => locator.fill started
+2024-03-29T21:56:05.828Z pw:api waiting for locator('role=textbox[name=\'Username\']')
+2024-03-29T21:56:05.838Z pw:api   locator resolved to <input type="text" required="" name="username" autocapi…/>
+2024-03-29T21:56:05.839Z pw:api   fill("tu-dealerportal-01@allane.com")
+2024-03-29T21:56:05.839Z pw:api attempting fill action
+2024-03-29T21:56:05.839Z pw:api   waiting for element to be visible, enabled and editable
+2024-03-29T21:56:05.849Z pw:api <= locator.fill succeeded
+2024-03-29T21:56:05.849Z pw:api => locator.fill started
+2024-03-29T21:56:05.849Z pw:api waiting for locator('role=textbox[name=\'Password\']')
+2024-03-29T21:56:05.851Z pw:api   locator resolved to <input required="" name="password" type="password" plac…/>
+2024-03-29T21:56:05.851Z pw:api   fill("DefaultPassword!1")
+2024-03-29T21:56:05.851Z pw:api attempting fill action
+2024-03-29T21:56:05.851Z pw:api   waiting for element to be visible, enabled and editable
+2024-03-29T21:56:05.888Z pw:api <= locator.fill succeeded
+2024-03-29T21:56:05.889Z pw:api => locator.click started
+2024-03-29T21:56:05.889Z pw:api waiting for locator('role=button[name=\'submit\']')
+2024-03-29T21:56:05.890Z pw:api   locator resolved to <input type="Submit" value="Sign in" aria-label="submit…/>
+2024-03-29T21:56:05.891Z pw:api attempting click action
+2024-03-29T21:56:05.891Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:56:05.906Z pw:api   element is visible, enabled and stable
+2024-03-29T21:56:05.906Z pw:api   scrolling into view if needed
+2024-03-29T21:56:05.906Z pw:api   done scrolling
+2024-03-29T21:56:05.907Z pw:api   performing click action
+2024-03-29T21:56:05.917Z pw:api   click action done
+2024-03-29T21:56:05.917Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:56:06.716Z pw:api   "commit" event fired
+2024-03-29T21:56:06.716Z pw:api   navigated to "https://dealerportal-hyundai.integration.test.or.sixt-leasing.com/"
+2024-03-29T21:56:06.716Z pw:api   navigated to "https://dealerportal-hyundai.integration.test.or.sixt-leasing.com/"
+2024-03-29T21:56:06.717Z pw:api   navigations have finished
+2024-03-29T21:56:06.717Z pw:api <= locator.click succeeded
+.2024-03-29T21:56:06.718Z pw:api => locator._expect started
+2024-03-29T21:56:06.718Z pw:api locator._expect with timeout 5000ms
+2024-03-29T21:56:06.719Z pw:api waiting for locator('[data-e2e="nav-create-offer"]')
+2024-03-29T21:56:07.497Z pw:api   "domcontentloaded" event fired
+2024-03-29T21:56:07.586Z pw:api   locator resolved to <a _ngcontent-ng-c510513231="" data-e2e="nav-create…>Angebot erstellen</a>
+2024-03-29T21:56:07.586Z pw:api <= locator._expect succeeded
+.2024-03-29T21:56:07.587Z pw:api => page.close started
+2024-03-29T21:56:07.590Z pw:api <= page.close succeeded
+2024-03-29T21:56:07.591Z pw:api => browser.close started
+2024-03-29T21:56:07.602Z pw:api <= browser.close succeeded
+.Starting Scenario: Unsuccessful Login to DealerPortal with Incorrect Credentials
+2024-03-29T21:56:07.602Z pw:api => browserType.launch started
+2024-03-29T21:56:07.710Z pw:api <= browserType.launch succeeded
+2024-03-29T21:56:07.710Z pw:api => browser.newPage started
+2024-03-29T21:56:07.757Z pw:api <= browser.newPage succeeded
+2024-03-29T21:56:07.757Z pw:api => page.setViewportSize started
+2024-03-29T21:56:07.758Z pw:api <= page.setViewportSize succeeded
+.2024-03-29T21:56:07.758Z pw:api => page.goto started
+2024-03-29T21:56:07.758Z pw:api navigating to "https://dealerportal-hyundai.integration.test.or.sixt-leasing.com/", waiting until "load"
+2024-03-29T21:56:08.144Z pw:api   "commit" event fired
+2024-03-29T21:56:08.144Z pw:api   navigated to "https://dealer-hyundai-auth-integration-test.auth.eu-central-1.amazoncognito.com/login?response_type=code&client_id=4ga7182hgrrkefchbsbqapvs9t&redirect_uri=https%3A%2F%2Fdealerportal-hyundai.integration.test.or.sixt-leasing.com%2Fauth%2Ftoken&state=ebb11b01216c035cf55450238be17cb268976c0f0af245e48ccb9eff6a521837&scope=email%20openid%20profile"
+2024-03-29T21:56:08.508Z pw:api   "domcontentloaded" event fired
+2024-03-29T21:56:08.508Z pw:api   "load" event fired
+2024-03-29T21:56:08.509Z pw:api <= page.goto succeeded
+.2024-03-29T21:56:08.509Z pw:api => locator.fill started
+2024-03-29T21:56:08.509Z pw:api waiting for locator('role=textbox[name=\'Username\']')
+2024-03-29T21:56:08.520Z pw:api   locator resolved to <input type="text" required="" name="username" autocapi…/>
+2024-03-29T21:56:08.520Z pw:api   fill("wrong-username")
+2024-03-29T21:56:08.520Z pw:api attempting fill action
+2024-03-29T21:56:08.520Z pw:api   waiting for element to be visible, enabled and editable
+2024-03-29T21:56:08.530Z pw:api <= locator.fill succeeded
+2024-03-29T21:56:08.531Z pw:api => locator.fill started
+2024-03-29T21:56:08.531Z pw:api waiting for locator('role=textbox[name=\'Password\']')
+2024-03-29T21:56:08.532Z pw:api   locator resolved to <input required="" name="password" type="password" plac…/>
+2024-03-29T21:56:08.532Z pw:api   fill("wrong-password")
+2024-03-29T21:56:08.532Z pw:api attempting fill action
+2024-03-29T21:56:08.532Z pw:api   waiting for element to be visible, enabled and editable
+2024-03-29T21:56:08.571Z pw:api <= locator.fill succeeded
+2024-03-29T21:56:08.571Z pw:api => locator.click started
+2024-03-29T21:56:08.572Z pw:api waiting for locator('role=button[name=\'submit\']')
+2024-03-29T21:56:08.573Z pw:api   locator resolved to <input type="Submit" value="Sign in" aria-label="submit…/>
+2024-03-29T21:56:08.574Z pw:api attempting click action
+2024-03-29T21:56:08.574Z pw:api   waiting for element to be visible, enabled and stable
+2024-03-29T21:56:08.589Z pw:api   element is visible, enabled and stable
+2024-03-29T21:56:08.589Z pw:api   scrolling into view if needed
+2024-03-29T21:56:08.590Z pw:api   done scrolling
+2024-03-29T21:56:08.590Z pw:api   performing click action
+2024-03-29T21:56:08.600Z pw:api   click action done
+2024-03-29T21:56:08.600Z pw:api   waiting for scheduled navigations to finish
+2024-03-29T21:56:08.834Z pw:api   "commit" event fired
+2024-03-29T21:56:08.834Z pw:api   navigated to "https://dealer-hyundai-auth-integration-test.auth.eu-central-1.amazoncognito.com/login?response_type=code&client_id=4ga7182hgrrkefchbsbqapvs9t&redirect_uri=https%3A%2F%2Fdealerportal-hyundai.integration.test.or.sixt-leasing.com%2Fauth%2Ftoken&state=ebb11b01216c035cf55450238be17cb268976c0f0af245e48ccb9eff6a521837&scope=email%20openid%20profile"
+2024-03-29T21:56:08.834Z pw:api   navigated to "https://dealer-hyundai-auth-integration-test.auth.eu-central-1.amazoncognito.com/login?response_type=code&client_id=4ga7182hgrrkefchbsbqapvs9t&redirect_uri=https%3A%2F%2Fdealerportal-hyundai.integration.test.or.sixt-leasing.com%2Fauth%2Ftoken&state=ebb11b01216c035cf55450238be17cb268976c0f0af245e48ccb9eff6a521837&scope=email%20openid%20profile"
+2024-03-29T21:56:08.838Z pw:api   navigations have finished
+2024-03-29T21:56:08.838Z pw:api <= locator.click succeeded
+.2024-03-29T21:56:08.839Z pw:api => locator.count started
+2024-03-29T21:56:08.856Z pw:api   "domcontentloaded" event fired
+2024-03-29T21:56:08.856Z pw:api   "load" event fired
+2024-03-29T21:56:08.858Z pw:api <= locator.count succeeded
+2024-03-29T21:56:08.858Z pw:api => locator.textContent started
+2024-03-29T21:56:08.859Z pw:api waiting for locator('#loginErrorMessage').first()
+2024-03-29T21:56:08.860Z pw:api   locator resolved to <p id="loginErrorMessage" class="errorMessage-custo…>User does not exist.</p>
+2024-03-29T21:56:08.860Z pw:api <= locator.textContent succeeded
+.2024-03-29T21:56:08.860Z pw:api => page.close started
+2024-03-29T21:56:08.865Z pw:api <= page.close succeeded
+2024-03-29T21:56:08.866Z pw:api => browser.close started
+2024-03-29T21:56:08.881Z pw:api <= browser.close succeeded
+.
+
+5 scenarios (5 passed)
+34 steps (34 passed)
+0m35.387s (executing steps: 0m35.369s)

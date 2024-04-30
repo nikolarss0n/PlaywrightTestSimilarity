@@ -3,7 +3,7 @@ function createReportEntryHtml(entry) {
   let test1Steps = entry["Test 1"]["Steps"];
   let test2Title = entry["Test 2"]["Name"];
   let test2Steps = entry["Test 2"]["Steps"];
-  let similarity = Math.round(entry["Similarity"]);
+  let similarity = Math.round(entry["Similarity"] * 100) / 100;
   let mergeSuggestion = entry["Merge Suggestion"];
 
   let maxLength = Math.max(test1Steps.length, test2Steps.length);

@@ -1,32 +1,26 @@
 {
-  "name": "e2e-similarity",
-  "version": "1.0.3",
-  "description": "This is a Node.js package that utilizes OpenAI's powerful davinci-003 model to run Cypress tests, gather and parse the logs, and generate a comprehensive report. Users can specify their test directory when running the command. The package is designed to help developers automate their testing process and gain insights from the test logs.",
-  "main": "index.js",
-  "type": "module",
+  "name": "pw-similarity",
+  "version": "1.0.0",
+  "description": "Node.js package for Playwright test similarity analysis.",
+  "main": "dist/calculate-similarity.js",
   "bin": {
-    "similarity-check": "./cli.js"
+    "pw-similarity": "./cli.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "test": "node --loader ts-node/esm calculate-similarity.ts"
   },
   "files": [
-    "index.js",
-    "cli.js"
-  ],
-  "author": "",
+    "dist/"
+  ],  
+  "author": "Nikolay Prosenikov",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^5.3.0",
-    "cli-progress": "^3.12.0",
-    "fs": "^0.0.1-security",
-    "js-combinatorics": "^2.1.2",
-    "lodash": "^4.17.21",
-    "ml-hclust": "^3.1.0",
     "openai": "^4.24.1"
   },
   "devDependencies": {
-    "@types/cli-progress": "^3.11.5",
-    "@types/lodash": "^4.14.202"
-  }
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
+  },
+  "type": "module"
 }

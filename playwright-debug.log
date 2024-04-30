@@ -1,0 +1,57 @@
+
+Running 3 tests using 1 worker
+
+  [38;5;45;1mpw:api [0m=> selectors.setTestIdAttribute started [38;5;45m+0ms[0m
+  [38;5;45;1mpw:api [0m=> browserType.launch started [38;5;45m+1ms[0m
+  [38;5;45;1mpw:api [0m<= selectors.setTestIdAttribute succeeded [38;5;45m+3ms[0m
+  [38;5;45;1mpw:api [0m<= browserType.launch succeeded [38;5;45m+160ms[0m
+  [38;5;45;1mpw:api [0m=> browser.newContext started [38;5;45m+0ms[0m
+  [38;5;45;1mpw:api [0m<= browser.newContext succeeded [38;5;45m+3ms[0m
+  [38;5;45;1mpw:api [0m=> browserContext.newPage started [38;5;45m+1ms[0m
+  [38;5;45;1mpw:api [0m<= browserContext.newPage succeeded [38;5;45m+33ms[0m
+  [38;5;45;1mpw:api [0m=> page.goto started [38;5;45m+1ms[0m
+  [38;5;45;1mpw:api [0mnavigating to "https://google.com/", waiting until "load" [38;5;45m+0ms[0m
+  [38;5;45;1mpw:api [0m  "commit" event fired [38;5;45m+455ms[0m
+  [38;5;45;1mpw:api [0m  navigated to "https://www.google.com/" [38;5;45m+0ms[0m
+  [38;5;45;1mpw:api [0m  navigated to "https://www.google.com/" [38;5;45m+102ms[0m
+  [38;5;45;1mpw:api [0m  "domcontentloaded" event fired [38;5;45m+0ms[0m
+  [38;5;45;1mpw:api [0m  "load" event fired [38;5;45m+212ms[0m
+  [38;5;45;1mpw:api [0m<= page.goto succeeded [38;5;45m+1ms[0m
+  ✓  1 src/test/rep.test.ts:3:5 › Password Strength Test 1 (819ms)
+  [38;5;45;1mpw:api [0m=> selectors.setTestIdAttribute started [38;5;45m+8ms[0m
+  [38;5;45;1mpw:api [0m=> browser.newContext started [38;5;45m+1ms[0m
+  [38;5;45;1mpw:api [0m<= selectors.setTestIdAttribute succeeded [38;5;45m+0ms[0m
+  [38;5;45;1mpw:api [0m<= browser.newContext succeeded [38;5;45m+2ms[0m
+  [38;5;45;1mpw:api [0m=> browserContext.newPage started [38;5;45m+1ms[0m
+  [38;5;45;1mpw:api [0m<= browserContext.newPage succeeded [38;5;45m+36ms[0m
+  [38;5;45;1mpw:api [0m=> page.goto started [38;5;45m+0ms[0m
+  [38;5;45;1mpw:api [0mnavigating to "https://youtube.com/", waiting until "load" [38;5;45m+1ms[0m
+  [38;5;45;1mpw:api [0m  "commit" event fired [38;5;45m+262ms[0m
+  [38;5;45;1mpw:api [0m  navigated to "https://www.youtube.com/" [38;5;45m+0ms[0m
+  [38;5;45;1mpw:api [0m  navigated to "about:blank" [38;5;45m+436ms[0m
+  [38;5;45;1mpw:api [0m  navigated to "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3D%252Fsignin_passive%26feature%3Dpassive&hl=en&ifkv=ARZ0qKKehG19M7wtBu_l0zuW-AlH2bfVXapa17IOvhodL031uk0ACZQSwCQ1Ks847J8VaPSAbjtt&passive=true&service=youtube&uilel=3&flowName=WebLiteSignIn&flowEntry=ServiceLogin&dsh=S2013540986%3A1711841595024977" [38;5;45m+32ms[0m
+  [38;5;45;1mpw:api [0m  "domcontentloaded" event fired [38;5;45m+19ms[0m
+  [38;5;45;1mpw:api [0m  "load" event fired [38;5;45m+249ms[0m
+  [38;5;45;1mpw:api [0m<= page.goto succeeded [38;5;45m+0ms[0m
+  ✓  2 src/test/rep.test.ts:7:5 › Password Strength Test 2 (1.0s)
+  [38;5;45;1mpw:api [0m=> selectors.setTestIdAttribute started [38;5;45m+8ms[0m
+  [38;5;45;1mpw:api [0m=> browser.newContext started [38;5;45m+0ms[0m
+  [38;5;45;1mpw:api [0m<= selectors.setTestIdAttribute succeeded [38;5;45m+1ms[0m
+  [38;5;45;1mpw:api [0m<= browser.newContext succeeded [38;5;45m+2ms[0m
+  [38;5;45;1mpw:api [0m=> browserContext.newPage started [38;5;45m+1ms[0m
+  [38;5;45;1mpw:api [0m<= browserContext.newPage succeeded [38;5;45m+36ms[0m
+  [38;5;45;1mpw:api [0m=> page.goto started [38;5;45m+1ms[0m
+  [38;5;45;1mpw:api [0mnavigating to "https://sportal.bg/", waiting until "load" [38;5;45m+0ms[0m
+  [38;5;45;1mpw:api [0m  "commit" event fired [38;5;45m+113ms[0m
+  [38;5;45;1mpw:api [0m  navigated to "https://sportal.bg/" [38;5;45m+0ms[0m
+  [38;5;45;1mpw:api [0m  navigated to "about:blank" [38;5;45m+156ms[0m
+  [38;5;45;1mpw:api [0m  navigated to "about:blank" [38;5;45m+278ms[0m
+  [38;5;45;1mpw:api [0m  "domcontentloaded" event fired [38;5;45m+239ms[0m
+  [38;5;45;1mpw:api [0m  navigated to "about:blank" [38;5;45m+41ms[0m
+  [38;5;45;1mpw:api [0m  navigated to "about:blank" [38;5;45m+2ms[0m
+  [38;5;45;1mpw:api [0m  navigated to "https://ls.hit.gemius.pl/lsget.html" [38;5;45m+81ms[0m
+  [38;5;45;1mpw:api [0m  "load" event fired [38;5;45m+364ms[0m
+  [38;5;45;1mpw:api [0m<= page.goto succeeded [38;5;45m+0ms[0m
+  ✓  3 src/test/rep.test.ts:11:5 › Password Strength Test 3 (1.3s)
+
+  3 passed (3.6s)
