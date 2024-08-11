@@ -7,6 +7,7 @@ export interface EvaluationReport {
 	"Test 2": { Name: string; Steps: string[] };
 	Similarity: number;
 	"Merge Suggestion": string;
+	"Matched Steps": [number, number][];
 }
 
 export class OpenAIService {
@@ -39,6 +40,7 @@ export class OpenAIService {
 		test1: [string, string[]],
 		test2: [string, string[]],
 		similarityPercentage: number,
+		matchedSteps: [number, number][],
 	): Promise<EvaluationReport> {
 		const [test1Name, test1Steps] = test1;
 		const [test2Name, test2Steps] = test2;
@@ -49,6 +51,7 @@ export class OpenAIService {
 			test1Steps,
 			test2Steps,
 			similarityPercentage,
+			matchedSteps,
 		);
 
 		return {
@@ -62,6 +65,7 @@ export class OpenAIService {
 			},
 			Similarity: similarityPercentage,
 			"Merge Suggestion": mergeSuggestion,
+			"Matched Steps": matchedSteps,
 		};
 	}
 
@@ -69,6 +73,7 @@ export class OpenAIService {
 		test1Steps: string[],
 		test2Steps: string[],
 		similarity: number,
+		matchedSteps: [number, number][],
 	): Promise<string> {
 		if (similarity <= this.similarityThreshold) {
 			return `No merge suggested due to low similarity (${similarity}%)`;
@@ -78,7 +83,7 @@ export class OpenAIService {
 			return "OpenAI client is not initialized. Cannot generate merge suggestion.";
 		}
 
-		const prompt = this.createPrompt(test1Steps, test2Steps);
+		const prompt = this.createPrompt(test1Steps, test2Steps, matchedSteps);
 
 		try {
 			const response = await this.openai.completions.create({
@@ -96,10 +101,26 @@ export class OpenAIService {
 		}
 	}
 
-	private createPrompt(test1Steps: string[], test2Steps: string[]): string {
-		return `Can these two test cases be merged? If yes, suggest how.\n\nTest 1: ${test1Steps.join(
-			", ",
-		)}\nTest 2: ${test2Steps.join(", ")}`;
+	private createPrompt(
+		test1Steps: string[],
+		test2Steps: string[],
+		matchedSteps: [number, number][],
+	): string {
+		const matchedStepsDescription = matchedSteps
+			.map(
+				([i, j]) => `Step ${i + 1} of Test 1 matches Step ${j + 1} of Test 2`,
+			)
+			.join("\n");
+
+		return `Can these two test cases be merged? If yes, suggest how. Consider the matched steps in your suggestion.
+
+Test 1: ${test1Steps.join(", ")}
+Test 2: ${test2Steps.join(", ")}
+
+Matched Steps:
+${matchedStepsDescription}
+
+Provide a step-by-step merge suggestion, preserving the order of steps where possible and including unique steps from both tests.`;
 	}
 
 	private processMergeSuggestion(suggestion: string): string {
@@ -107,9 +128,14 @@ export class OpenAIService {
 			return suggestion;
 		}
 
-		const suggestedSteps = suggestion.split(", ");
+		const suggestedSteps = suggestion.split("\n");
 		return suggestedSteps
-			.map((step) => `- ${step.trim().replace(/'/g, "")}`)
+			.map((step) => step.trim())
+			.filter((step) => step.length > 0)
+			.map((step) => {
+				if (step.startsWith("-")) return step;
+				return `- ${step.replace(/^\d+\.\s*/, "")}`;
+			})
 			.join("\n");
 	}
 }

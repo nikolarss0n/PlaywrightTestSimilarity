@@ -45,7 +45,7 @@ export class LogParser {
 		let isCucumberTest = false;
 
 		for (const line of lines) {
-			const strippedLine = line.trim();
+			const strippedLine = this.stripTimestamp(line.trim());
 
 			if (this.patterns.cucumberTitle.test(strippedLine)) {
 				this.finalizeCucumberTest(tests, currentTest);
@@ -67,6 +67,13 @@ export class LogParser {
 
 		this.finalizeCucumberTest(tests, currentTest);
 		return tests;
+	}
+
+	private stripTimestamp(line: string): string {
+		// Remove any leading non-alphanumeric characters, then the timestamp
+		return line
+			.replace(/^[^a-zA-Z0-9]*/, "")
+			.replace(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z\s+/, "");
 	}
 
 	private createCucumberTest(line: string): Test {

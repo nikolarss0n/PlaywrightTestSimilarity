@@ -1,7 +1,5 @@
 import { parseRawFile } from "./parsers/logParser";
 import { TestComparisonService } from "./services/testComparisonService";
-import { SimilarityCalculator } from "./utils/similarityCalculator";
-import { StepSummarizer } from "./utils/stepSummarizer";
 import { OpenAIService } from "./services/openAIService";
 import { generateHtmlReport } from "./reporters/htmlReporter";
 import { Logger } from "./utils/logger";
@@ -21,17 +19,8 @@ async function main(logFilePath: string) {
 			`Filtered down to ${filteredTests.length} tests with 5 or more steps.`,
 		);
 
-		const stepSummarizer = new StepSummarizer(undefined, logger);
-		const similarityCalculator = new SimilarityCalculator(
-			logger,
-			stepSummarizer,
-		);
 		const openAIService = new OpenAIService(config, logger);
-		const comparisonService = new TestComparisonService(
-			similarityCalculator,
-			openAIService,
-			logger,
-		);
+		const comparisonService = new TestComparisonService(openAIService, logger);
 
 		const results: EvaluationReport[] =
 			await comparisonService.compareTests(filteredTests);
