@@ -132,24 +132,13 @@ export class HtmlReporter {
         font-size: 14px;
         color: #b0b0b0;
     }
-    .similarity-matrix {
-        overflow-x: auto;
+  .similarity-matrix {
+        overflow: visible;
         margin-top: 20px;
-    }
-    .similarity-matrix table {
-        border-collapse: collapse;
         width: 100%;
-    }
-    .similarity-matrix th, .similarity-matrix td {
-        border: 1px solid #444;
-        padding: 8px;
-        text-align: center;
-        font-size: 14px;
-    }
-    .similarity-matrix th {
-        background-color: #333;
-        color: #fff;
-        font-weight: bold;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
     }
     .similarity-cell {
         transition: background-color 0.3s;
@@ -212,6 +201,19 @@ export class HtmlReporter {
         align-items: center;
         word-break: break-word;
     }
+    .node {
+        fill: #4caf50;
+    }
+    .link {
+        stroke: #888;
+        stroke-opacity: 0.6;
+    }
+    .node-label {
+        font-size: 12px;
+        fill: #fff;
+        text-anchor: middle;
+        dominant-baseline: central;
+    }
     .matched-step {
         background-color: rgba(76, 175, 80, 0.2);
     }
@@ -223,6 +225,50 @@ export class HtmlReporter {
             flex: 1 0 auto;
             margin-bottom: 20px;
         }
+    }
+            .similarity-matrix {
+        overflow: visible;
+        margin-top: 20px;
+        width: 100%;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .similarity-matrix svg {
+        width: 100%;
+        height: auto;
+        background-color: #1a1a1a;
+        border-radius: 8px;
+    }
+    .node {
+        fill: #4caf50;
+        transition: all 0.3s ease;
+    }
+    .node:hover {
+        fill: #45a049;
+        r: 15;
+    }
+    .link {
+        stroke-opacity: 0.6;
+        transition: all 0.3s ease;
+    }
+    .link:hover {
+        stroke-opacity: 1;
+    }
+    .node-label {
+        font-size: 7px;
+        fill: #fff;
+        text-anchor: middle;
+        dominant-baseline: central;
+        pointer-events: none;
+    }
+    .similarity-label {
+        font-size: 7px;
+        text-anchor: middle;
+        dominant-baseline: central;
+        font-weight: bold;
+        pointer-events: none;
+        text-shadow: 0 0 2px #000, 0 0 2px #000, 0 0 2px #000; /* Enhanced text shadow for better visibility */
     }
     `;
 
@@ -324,32 +370,49 @@ export class HtmlReporter {
     function createSimilarityMatrix(reportData) {
         const allTestNames = [...new Set(reportData.flatMap(entry => [entry['Test 1'].Name, entry['Test 2'].Name]))];
         const testNames = allTestNames.slice(0, 5); // Limit to first 5 tests
-        let matrixHtml = '<div class="similarity-matrix"><table><tr><th></th>';
-        
-        testNames.forEach(name => {
-            matrixHtml += \`<th>\${name}</th>\`;
-        });
-        matrixHtml += '</tr>';
+        const n = testNames.length;
+        const radius = 180;
+        const centerX = 250;
+        const centerY = 250;
 
-        testNames.forEach(name1 => {
-            matrixHtml += \`<tr><th>\${name1}</th>\`;
-            testNames.forEach(name2 => {
-                if (name1 === name2) {
-                    matrixHtml += '<td>-</td>';
-                } else {
-                    const entry = reportData.find(e => 
-                        (e['Test 1'].Name === name1 && e['Test 2'].Name === name2) ||
-                        (e['Test 1'].Name === name2 && e['Test 2'].Name === name1)
-                    );
-                    const similarity = entry ? Math.round(entry.Similarity) : 0;
-                    const backgroundColor = \`hsl(\${120 * similarity / 100}, 100%, \${40 + (similarity / 2)}%)\`;
-                    matrixHtml += \`<td class="similarity-cell" style="background-color: \${backgroundColor}">\${similarity}%</td>\`;
+        let matrixHtml = '<div class="similarity-matrix"><svg viewBox="0 0 500 500" id="similarityGraph">';
+
+        // Create links
+        for (let i = 0; i < n; i++) {
+            for (let j = i + 1; j < n; j++) {
+                const entry = reportData.find(e =>
+                    (e['Test 1'].Name === testNames[i] && e['Test 2'].Name === testNames[j]) ||
+                    (e['Test 1'].Name === testNames[j] && e['Test 2'].Name === testNames[i])
+                );
+                if (entry) {
+                    const similarity = Math.round(entry.Similarity);
+                    const x1 = centerX + radius * Math.cos(i * 2 * Math.PI / n);
+                    const y1 = centerY + radius * Math.sin(i * 2 * Math.PI / n);
+                    const x2 = centerX + radius * Math.cos(j * 2 * Math.PI / n);
+                    const y2 = centerY + radius * Math.sin(j * 2 * Math.PI / n);
+                    const midX = (x1 + x2) / 2;
+                    const midY = (y1 + y2) / 2;
+                    const strokeWidth = similarity / 25; // Thinner lines
+                    const strokeColor = \`hsl(\${120 * similarity / 100}, 100%, \${40 + (similarity / 2)}%)\`;
+                    
+                    matrixHtml += \`<line class="link" x1="\${x1}" y1="\${y1}" x2="\${x2}" y2="\${y2}" 
+                                    stroke="\${strokeColor}" stroke-width="\${strokeWidth}"></line>\`;
+                    matrixHtml += \`<text class="similarity-label" x="\${midX}" y="\${midY}" 
+                                    fill="\${strokeColor}" data-x1="\${x1}" data-y1="\${y1}" data-x2="\${x2}" data-y2="\${y2}">
+                                    \${similarity}%</text>\`;
                 }
-            });
-            matrixHtml += '</tr>';
+            }
+        }
+
+        // Create nodes
+        testNames.forEach((name, i) => {
+            const x = centerX + radius * Math.cos(i * 2 * Math.PI / n);
+            const y = centerY + radius * Math.sin(i * 2 * Math.PI / n);
+            matrixHtml += \`<circle class="node" cx="\${x}" cy="\${y}" r="10" data-original-cx="\${x}" data-original-cy="\${y}"></circle>\`;
+            matrixHtml += \`<text class="node-label" x="\${x}" y="\${y}">\${name}</text>\`;
         });
 
-        matrixHtml += '</table></div>';
+        matrixHtml += '</svg></div>';
         if (allTestNames.length > 5) {
             matrixHtml += \`<p>Showing 5 out of \${allTestNames.length} tests. See full list below for all tests.</p>\`;
         }
@@ -431,6 +494,71 @@ export class HtmlReporter {
         
         similarityInput.addEventListener("input", () => {
             filterAndDisplayReports(parseFloat(similarityInput.value));
+        });
+
+        // Add animation for nodes
+        animateNodes();
+    }
+
+      function animateNodes() {
+        const nodes = document.querySelectorAll('.node');
+        const labels = document.querySelectorAll('.node-label');
+        const links = document.querySelectorAll('.link');
+        const similarityLabels = document.querySelectorAll('.similarity-label');
+
+        nodes.forEach((node, index) => {
+            const originalX = parseFloat(node.getAttribute('data-original-cx'));
+            const originalY = parseFloat(node.getAttribute('data-original-cy'));
+            let angle = Math.random() * Math.PI * 2;
+            let speed = 0.5 + Math.random() * 0.5;
+            let radius = 3 + Math.random() * 2;
+
+            function animate() {
+                angle += speed * 0.02;
+                const dx = Math.cos(angle) * radius;
+                const dy = Math.sin(angle) * radius;
+                const newX = originalX + dx;
+                const newY = originalY + dy;
+
+                // Update node position
+                node.setAttribute('cx', newX);
+                node.setAttribute('cy', newY);
+
+                // Update label position
+                labels[index].setAttribute('x', newX);
+                labels[index].setAttribute('y', newY);
+
+                // Update connected lines
+                links.forEach(link => {
+                    if (link.getAttribute('x1') == originalX && link.getAttribute('y1') == originalY) {
+                        link.setAttribute('x1', newX);
+                        link.setAttribute('y1', newY);
+                    } else if (link.getAttribute('x2') == originalX && link.getAttribute('y2') == originalY) {
+                        link.setAttribute('x2', newX);
+                        link.setAttribute('y2', newY);
+                    }
+                });
+
+                // Update similarity labels
+                similarityLabels.forEach(label => {
+                    const x1 = parseFloat(label.getAttribute('data-x1'));
+                    const y1 = parseFloat(label.getAttribute('data-y1'));
+                    const x2 = parseFloat(label.getAttribute('data-x2'));
+                    const y2 = parseFloat(label.getAttribute('data-y2'));
+
+                    if (x1 === originalX && y1 === originalY) {
+                        label.setAttribute('x', (newX + x2) / 2);
+                        label.setAttribute('y', (newY + y2) / 2);
+                    } else if (x2 === originalX && y2 === originalY) {
+                        label.setAttribute('x', (x1 + newX) / 2);
+                        label.setAttribute('y', (y1 + newY) / 2);
+                    }
+                });
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
         });
     }
 
