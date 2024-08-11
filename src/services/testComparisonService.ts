@@ -49,60 +49,130 @@ export class TestComparisonService {
 		const filteredSteps: string[] = [];
 		let currentAction: string | null = null;
 		let retryCount = 0;
+		const apiCallsBuffer: string[] = [];
 
 		for (const step of steps) {
 			if (this.isNavigation(step)) {
-				this.finalizeCurrentAction(filteredSteps, currentAction);
+				this.finalizeCurrentAction(
+					filteredSteps,
+					currentAction,
+					apiCallsBuffer,
+				);
 				currentAction = this.extractNavigationInfo(step);
 			} else if (this.isInteraction(step)) {
 				const newAction = this.extractInteractionInfo(step);
 				if (currentAction?.startsWith("Interaction:")) {
-					currentAction += `, ${newAction}`;
+					// Instead of appending to the current action, finalize it and start a new one
+					this.finalizeCurrentAction(
+						filteredSteps,
+						currentAction,
+						apiCallsBuffer,
+					);
+					currentAction = `Interaction: ${newAction}`;
 				} else {
-					this.finalizeCurrentAction(filteredSteps, currentAction);
+					this.finalizeCurrentAction(
+						filteredSteps,
+						currentAction,
+						apiCallsBuffer,
+					);
 					currentAction = `Interaction: ${newAction}`;
 				}
 			} else if (this.isRetryAttempt(step)) {
 				retryCount++;
 				if (retryCount === 3) {
-					// Arbitrary threshold, adjust as needed
-					this.finalizeCurrentAction(filteredSteps, `Retry: ${currentAction}`);
+					this.finalizeCurrentAction(
+						filteredSteps,
+						`Retry: ${currentAction}`,
+						apiCallsBuffer,
+					);
 					currentAction = null;
 					retryCount = 0;
 				}
 			} else if (this.isApiCall(step)) {
-				this.finalizeCurrentAction(filteredSteps, currentAction);
-				currentAction = this.extractApiCallInfo(step);
+				apiCallsBuffer.push(this.extractApiCallInfo(step));
 			}
 		}
 
-		this.finalizeCurrentAction(filteredSteps, currentAction);
+		this.finalizeCurrentAction(filteredSteps, currentAction, apiCallsBuffer);
 		return filteredSteps;
 	}
 
 	private finalizeCurrentAction(
 		filteredSteps: string[],
 		currentAction: string | null,
+		apiCallsBuffer: string[],
 	) {
-		if (currentAction) {
-			filteredSteps.push(currentAction);
+		let updatedAction: string | null = currentAction;
+
+		if (updatedAction) {
+			if (apiCallsBuffer.length > 0) {
+				const apiSummary = this.summarizeApiCalls(apiCallsBuffer);
+				updatedAction += ` (${apiSummary})`;
+				apiCallsBuffer.length = 0; // Clear the buffer
+			}
+			filteredSteps.push(updatedAction);
+		} else if (apiCallsBuffer.length > 0) {
+			filteredSteps.push(
+				`API Calls: ${this.summarizeApiCalls(apiCallsBuffer)}`,
+			);
+			apiCallsBuffer.length = 0; // Clear the buffer
 		}
 	}
 
+	private summarizeApiCalls(apiCalls: string[]): string {
+		const summary: { [key: string]: { started: number; succeeded: number } } =
+			{};
+		for (const call of apiCalls) {
+			const [action, status] = call.split(" ");
+			if (!summary[action]) {
+				summary[action] = { started: 0, succeeded: 0 };
+			}
+			if (status === "started") {
+				summary[action].started++;
+			} else if (status === "succeeded") {
+				summary[action].succeeded++;
+			}
+		}
+		return Object.entries(summary)
+			.map(([action, counts]) => {
+				const startedCount =
+					counts.started > 0 ? `${counts.started} started` : "";
+				const succeededCount =
+					counts.succeeded > 0 ? `${counts.succeeded} succeeded` : "";
+				const countStr = [startedCount, succeededCount]
+					.filter(Boolean)
+					.join(", ");
+				return `${action}: ${countStr}`;
+			})
+			.join(", ");
+	}
+
+	private isApiCall(step: string): boolean {
+		return (
+			step.startsWith("pw:api") &&
+			(step.includes("started") || step.includes("succeeded"))
+		);
+	}
+
+	private extractApiCallInfo(step: string): string {
+		const match = step.match(/pw:api [=><]+ ([^ ]+) (started|succeeded)/);
+		return match ? `${match[1]} ${match[2]}` : step;
+	}
+
 	private isNavigation(step: string): boolean {
-		return step.includes("navigating to") || step.includes("navigated to");
+		return step.startsWith("Navigate to");
 	}
 
 	private extractNavigationInfo(step: string): string {
-		const match = step.match(/navigat(?:ing|ed) to "([^"]+)"/);
-		return match ? `Navigate to ${match[1]}` : step;
+		return step;
 	}
 
 	private isInteraction(step: string): boolean {
 		return (
 			step.includes("locator.") ||
 			step.includes("page.") ||
-			step.includes("getBy")
+			step.includes("getBy") ||
+			step.includes("pw:api")
 		);
 	}
 
@@ -129,58 +199,50 @@ export class TestComparisonService {
 		if (step.includes("dblclick")) return "Double Click";
 		if (step.includes("tap")) return "Tap";
 		if (step.includes("expect")) return "Expect";
-		if (step.includes("toHaveText")) return "Validate Text";
-		if (step.includes("toBeVisible")) return "Validate Visibility";
-		if (step.includes("toBeEnabled")) return "Validate Enabled State";
-		if (step.includes("toHaveAttribute")) return "Validate Attribute";
-		if (step.includes("toHaveValue")) return "Validate Value";
-		if (step.includes("toHaveCount")) return "Validate Count";
-		if (step.includes("toContainText")) return "Validate Contained Text";
-		if (step.includes("toHaveClass")) return "Validate Class";
-		if (step.includes("toBeChecked")) return "Validate Checked State";
-		if (step.includes("waitFor")) return "Wait";
+		if (step.includes("waitFor")) return "Wait for";
 		if (step.includes("screenshot")) return "Take Screenshot";
+		if (step.includes("setViewportSize")) return "Set Viewport Size";
+		if (step.includes("goto")) return "Navigate";
 		return "Interact with";
 	}
 
 	private extractInteractionTarget(step: string): string {
-		const roleMatch = step.match(
-			/getByRole\('([^']+)',\s*{\s*name:\s*'([^']+)'\s*}/,
+		const apiMatch = step.match(/pw:api ([^(]+)\(([^)]+)\)/);
+		if (apiMatch) {
+			return `element (${apiMatch[1]}${apiMatch[2]})`;
+		}
+
+		const locatorMatch = step.match(/locator\.(\w+) (\w+)/);
+		if (locatorMatch) {
+			const [, action, status] = locatorMatch;
+			if (action === "_expect") {
+				const expectationMatch = step.match(/expect\(([^)]+)\)\.([^(]+)\(/);
+				if (expectationMatch) {
+					const [, target, expectation] = expectationMatch;
+					return `${target} to ${expectation} (${status})`;
+				}
+			}
+			return `element (${locatorMatch[0]})`;
+		}
+
+		const waitForMatch = step.match(/page\.waitForResponse (\w+)/);
+		if (waitForMatch) {
+			return `element (${waitForMatch[0]})`;
+		}
+
+		const expectTimeoutMatch = step.match(
+			/locator\._expect with timeout (\d+)ms/,
 		);
-		if (roleMatch) {
-			return `${roleMatch[1]} "${roleMatch[2]}"`;
+		if (expectTimeoutMatch) {
+			return `element (locator._expect with timeout ${expectTimeoutMatch[1]}ms)`;
 		}
 
-		const simpleMatch = step.match(
-			/(?:locator|getByText|page\.(?:fill|click|type|press|select))\('([^']+)'/,
-		);
-		if (simpleMatch) {
-			return simpleMatch[1];
-		}
-
-		const resolvedMatch = step.match(/locator resolved to <([^>]+)>/);
-		if (resolvedMatch) {
-			const elementType = resolvedMatch[1].split(" ")[0];
-			return `${elementType} element`;
-		}
-
-		return "unknown element";
+		// If no specific pattern matches, return the full step
+		return `element (${step})`;
 	}
 
 	private isRetryAttempt(step: string): boolean {
 		return step.includes("retrying") && step.includes("attempt #");
-	}
-
-	private isApiCall(step: string): boolean {
-		return (
-			step.includes("api") &&
-			(step.includes("started") || step.includes("succeeded"))
-		);
-	}
-
-	private extractApiCallInfo(step: string): string {
-		const match = step.match(/(\w+)\s+(started|succeeded)/);
-		return match ? `API: ${match[1]} ${match[2]}` : step;
 	}
 
 	private compareTestSteps(

@@ -19,8 +19,11 @@ export class HtmlReporter {
         line-height: 1.6;
     }
     .container {
-        max-width: 1200px;
+        max-width: 70%;
+        width: 70%;
         margin: 0 auto;
+        padding: 0 20px;
+        box-sizing: border-box;
     }
     .card {
         background-color: #1e1e1e;
@@ -29,6 +32,7 @@ export class HtmlReporter {
         margin-bottom: 20px;
         padding: 20px;
         color: #ffffff;
+        overflow-x: auto;
     }
     .test-case-title {
         font-size: 20px;
@@ -102,10 +106,13 @@ export class HtmlReporter {
         margin-bottom: 30px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
-    .summary-title {
+   .summary-title {
         font-size: 24px;
         color: #4caf50;
+        margin: 0 auto;
         margin-bottom: 15px;
+        text-align: center;
+        width: 100%;
     }
     .summary-stats {
         display: flex;
@@ -159,6 +166,9 @@ export class HtmlReporter {
         align-items: center;
         justify-content: center;
     }
+    .color-legend span {
+        margin-right: 10px;
+    }
     .legend-item {
         display: inline-block;
         width: 40px;
@@ -176,17 +186,55 @@ export class HtmlReporter {
             margin-bottom: 20px;
         }
     }
+    .test-columns {
+        display: flex;
+        justify-content: space-between;
+        min-width: 100%;
+    }
+    .test-column {
+        flex: 0 0 48%; /* Adjust this value as needed */
+        padding: 0 10px;
+        min-width: 300px;
+    }
+    .step-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .step-row {
+        display: flex;
+        min-height: 30px; /* Adjust this value as needed */
+    }
+    .step-cell {
+        flex: 1;
+        padding: 5px;
+        border-bottom: 1px solid #333;
+        display: flex;
+        align-items: center;
+        word-break: break-word;
+    }
+    .matched-step {
+        background-color: rgba(76, 175, 80, 0.2);
+    }
+    @media (max-width: 768px) {
+        .test-columns {
+            flex-direction: column;
+        }
+        .test-column {
+            flex: 1 0 auto;
+            margin-bottom: 20px;
+        }
+    }
     `;
 
 	private readonly scriptContent: string = `
     function escapeHtml(unsafe) {
-            return unsafe
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
-        }
+        return unsafe
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
 
     function createReportEntryHtml(entry) {
         const test1Title = entry["Test 1"]["Name"];
@@ -197,16 +245,14 @@ export class HtmlReporter {
         const mergeSuggestion = entry["Merge Suggestion"];
         const matchedSteps = entry["Matched Steps"] || [];
         
-        const maxLength = Math.max(test1Steps.length, test2Steps.length);
         let reportHtml = "<div class='card'>";
         
         reportHtml += \`<div class='test-case-title'>\${test1Title} vs \${test2Title}</div>\`;
-        reportHtml += "<div class='row'>";
+        reportHtml += "<div class='test-columns'>";
         
-        reportHtml += createTestStepsHtml(test1Title, test1Steps, matchedSteps, 0, maxLength);
-        reportHtml += createTestStepsHtml(test2Title, test2Steps, matchedSteps, 1, maxLength);
+        reportHtml += createTestStepsHtml(test1Title, test2Title, test1Steps, test2Steps, matchedSteps);
         
-        reportHtml += "</div>"; // Close row
+        reportHtml += "</div>"; // Close test-columns
         reportHtml += \`<div class='test-case-footer'>Similarity: \${similarity}%</div>\`;
         
         if (mergeSuggestion) {
@@ -218,18 +264,51 @@ export class HtmlReporter {
         return reportHtml;
     }
     
-    function createTestStepsHtml(title, steps, matchedSteps, testIndex, maxLength) {
-        let html = \`<div class="col"><h3>\${escapeHtml(title)}</h3><pre>\`;
-        for (let j = 0; j < maxLength; j++) {
-            const step = steps[j] || "----";
-            const isMatched = matchedSteps.some(pair => pair[testIndex] === j);
-            const stepClass = isMatched ? "same-step" : "";
-            html += \`<span class="\${stepClass}">\${j + 1}. \${escapeHtml(step)}</span>\n\`;
+    function createTestStepsHtml(title1, title2, steps1, steps2, matchedSteps) {
+        const maxLength = Math.max(steps1.length, steps2.length);
+        
+        let html = \`
+            <div class="test-column">
+                <h3>\${escapeHtml(title1)}</h3>
+                <div class="step-container">
+        \`;
+        
+        for (let i = 0; i < maxLength; i++) {
+            const step1 = steps1[i] || "----";
+            const isMatched = matchedSteps.some(pair => pair[0] === i && pair[1] === i);
+            const rowClass = isMatched ? "matched-step" : "";
+            
+            html += \`<div class="step-row \${rowClass}">
+                <div class="step-cell">\${i + 1}. \${escapeHtml(step1)}</div>
+            </div>\`;
         }
-        html += "</pre></div>";
+        
+        html += \`
+                </div>
+            </div>
+            <div class="test-column">
+                <h3>\${escapeHtml(title2)}</h3>
+                <div class="step-container">
+        \`;
+        
+        for (let i = 0; i < maxLength; i++) {
+            const step2 = steps2[i] || "----";
+            const isMatched = matchedSteps.some(pair => pair[0] === i && pair[1] === i);
+            const rowClass = isMatched ? "matched-step" : "";
+            
+            html += \`<div class="step-row \${rowClass}">
+                <div class="step-cell">\${i + 1}. \${escapeHtml(step2)}</div>
+            </div>\`;
+        }
+        
+        html += \`
+                </div>
+            </div>
+        \`;
+        
         return html;
     }
-    
+
     function countSteps(steps) {
         const counts = new Map();
         steps.forEach(step => {
