@@ -5,12 +5,15 @@
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Test Similarity Report</title>
-                <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet">
+                <link href="https://fonts.googleapis.com/css?family=SF+Pro+Display:400,500&display=swap" rel="stylesheet">
                 <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #0f0f1f; /* Dark background */
-            color: #ffffff;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background-image: url('https://vehicle.static.prod.or.sixt-leasing.com/cms/whitelabel/2023-03/de_amg_en_home_hero_0.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: rgba(255, 255, 255, 0.9);
             padding: 20px;
             line-height: 1.6;
             min-height: 100vh;
@@ -24,21 +27,45 @@
         }
 
         .card, .test-column, .threshold-input, .stat-item {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 4px 30px rgba(0, 0, 0, 0.1),
+                inset 0 0 20px rgba(255, 255, 255, 0.05);
             margin-bottom: 20px;
-            padding: 15px;
+            padding: 20px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before, .test-column::before, .threshold-input::before, .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+            border-radius: 20px 20px 100% 100%;
+            pointer-events: none;
+        }
+
+        .card:hover, .test-column:hover, .threshold-input:hover, .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.2),
+                inset 0 0 30px rgba(255, 255, 255, 0.1);
         }
 
         .test-case-title {
             font-size: 20px;
             font-weight: bold;
             margin-bottom: 15px;
-            color: #00a8ff; /* Bright blue for titles */
+            color: rgb(215 252 3 / 0.9);
         }
 
         .test-columns {
@@ -60,30 +87,31 @@
         }
 
         .matched-step {
-            background-color: rgba(0, 255, 0, 0.1); /* Slight green tint for matched steps */
+            background-color: rgba(215, 252, 3, 0.2);
         }
 
         .test-case-footer {
             font-weight: bold;
             margin-top: 15px;
-            color: #00a8ff; /* Bright blue for emphasis */
+            color: rgb(215 252 3 / 0.9);
         }
 
         .merge-suggestion {
             margin-top: 15px;
             padding: 15px;
-            background-color: rgba(0, 255, 0, 0.05); /* Very slight green tint */
+            background-color: rgba(215, 252, 3, 0.1);
             border-radius: 10px;
         }
 
         .threshold-input label {
             font-weight: bold;
             margin-right: 10px;
+            color: rgb(215 252 3 / 0.9);
         }
 
         .threshold-input input {
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(215, 252, 3, 0.5);
+            background-color: rgba(0, 0, 0, 0.3);
             color: #ffffff;
             border-radius: 4px;
             padding: 8px 12px;
@@ -98,7 +126,7 @@
 
         .summary-title {
             font-size: 24px;
-            color: #00a8ff; /* Bright blue for titles */
+            color: rgb(215 252 3 / 0.9);
             margin-bottom: 15px;
             text-align: center;
         }
@@ -112,7 +140,7 @@
         .stat-value {
             font-size: 36px;
             font-weight: bold;
-            color: #00a8ff; /* Bright blue for emphasis */
+            color: rgb(215 252 3 / 0.9);
         }
 
         .stat-label {
@@ -120,32 +148,55 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        .similarity-matrix {
+             .similarity-matrix {
             background-color: rgba(0, 0, 0, 0.8);
-            border-radius: 15px;
+            border-radius: 20px;
             padding: 20px;
             margin-top: 30px;
+            margin-bottom: 30px;
         }
 
-        .similarity-matrix svg {
-            background-color: transparent;
-            border: none;
+        .similarity-matrix table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 2px;
+        }
+
+        .similarity-matrix th, .similarity-matrix td {
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+            border-radius: 5px;
+        }
+
+        .similarity-matrix th {
+            background-color: rgba(215, 252, 3, 0.2);
+            color: rgb(215 252 3 / 0.9);
+        }
+
+        .similarity-matrix td {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .similarity-value {
+            font-weight: bold;
+            color: rgb(215 252 3 / 0.9);
         }
 
         .node {
-            fill: #00a8ff;
-            stroke: #00a8ff;
+            fill: rgb(215 252 3 / 0.9);
+            stroke: rgb(215 252 3 / 0.9);
             stroke-width: 2;
             filter: url(#glow);
         }
 
         .node:hover {
-            fill: #ff9ff3;
-            stroke: #ff9ff3;
+            fill: rgb(229 115 115 / 0.9);
+            stroke: rgb(229 115 115 / 0.9);
         }
 
         .link {
-            stroke: #00a8ff;
+            stroke: rgb(215 252 3 / 0.6);
             stroke-opacity: 0.6;
             filter: url(#glow);
         }
@@ -189,13 +240,15 @@
             </head>
             <body>
                 <div class="container">
-                    <h1>Test Similarity Report</h1>
+                    <div class="card">
+                        <h1>Test Similarity Report</h1>
+                    </div>
                     <div id="summarySection"></div>
                     <div id="fullTestListSection"></div>
-                    <div class="threshold-input">
+                    <div class="card threshold-input">
                         <label for="similarityThreshold">Similarity Threshold (%): </label>
                         <input type="number" id="similarityThreshold" value="70" min="0" max="100" step="5">
-                        <small>Adjust the value to filter results</small>
+                        <span id="displayCount" class="display-count"></span>
                     </div>
                     <div id="reportContainer"></div>
                 </div>
@@ -242,7 +295,7 @@
         function createTestStepsHtml(title1, title2, steps1, steps2, matchedSteps) {
             const maxLength = Math.max(steps1.length, steps2.length);
             
-            let html = `
+             let html = `
                 <div class="test-column">
                     <h3>${escapeHtml(title1)}</h3>
                     <div class="step-container">
@@ -284,79 +337,44 @@
             return html;
         }
 
-        function createSimilarityMatrix(reportData) {
+     function createSimilarityMatrix(reportData) {
             const allTestNames = [...new Set(reportData.flatMap(entry => [entry['Test 1'].Name, entry['Test 2'].Name]))];
-            const testNames = allTestNames.slice(0, 5); // Limit to first 5 tests
-            const n = testNames.length;
-            const radius = 180;
-            const centerX = 250;
-            const centerY = 250;
+            const testNames = allTestNames.slice(0, 10); // Limit to first 10 tests
+            
+            let matrixHtml = '<div class="similarity-matrix"><table><tr><th></th>';
+            
+            // Create header row
+            testNames.forEach(name => {
+                matrixHtml += `<th>${name}</th>`;
+            });
+            matrixHtml += '</tr>';
 
-            let matrixHtml = `
-            <div class="similarity-matrix">
-                <svg viewBox="0 0 500 500" id="similarityGraph">
-                    <defs>
-                        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                            <feMerge>
-                                <feMergeNode in="coloredBlur"/>
-                                <feMergeNode in="SourceGraphic"/>
-                            </feMerge>
-                        </filter>
-                    </defs>
-            `;
-
-            // Create links
-            for (let i = 0; i < n; i++) {
-                for (let j = i + 1; j < n; j++) {
-                    const entry = reportData.find(e =>
-                        (e['Test 1'].Name === testNames[i] && e['Test 2'].Name === testNames[j]) ||
-                        (e['Test 1'].Name === testNames[j] && e['Test 2'].Name === testNames[i])
-                    );
-                    if (entry) {
-                        const similarity = Math.round(entry.Similarity);
-                        const x1 = centerX + radius * Math.cos(i * 2 * Math.PI / n);
-                        const y1 = centerY + radius * Math.sin(i * 2 * Math.PI / n);
-                        const x2 = centerX + radius * Math.cos(j * 2 * Math.PI / n);
-                        const y2 = centerY + radius * Math.sin(j * 2 * Math.PI / n);
-                        const midX = (x1 + x2) / 2;
-                        const midY = (y1 + y2) / 2;
-                        const strokeWidth = similarity / 50 + 0.5; // Thinner lines
-                        const strokeOpacity = similarity / 100;
-                        
-                        matrixHtml += `<line class="link" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" 
-                                        stroke-width="${strokeWidth}" stroke-opacity="${strokeOpacity}"></line>`;
-                        matrixHtml += `<text class="similarity-label" x="${midX}" y="${midY}" 
-                                        data-x1="${x1}" data-y1="${y1}" data-x2="${x2}" data-y2="${y2}">
-                                        ${similarity}%</text>`;
+            // Create rows
+            testNames.forEach((name1, i) => {
+                matrixHtml += `<tr><th>${name1}</th>`;
+                testNames.forEach((name2, j) => {
+                    if (i === j) {
+                        matrixHtml += '<td>-</td>';
+                    } else {
+                        const entry = reportData.find(e =>
+                            (e['Test 1'].Name === name1 && e['Test 2'].Name === name2) ||
+                            (e['Test 1'].Name === name2 && e['Test 2'].Name === name1)
+                        );
+                        const similarity = entry ? Math.round(entry.Similarity) : '-';
+                        const backgroundColor = entry ? `rgba(215, 252, 3, ${similarity / 100})` : 'rgba(255, 255, 255, 0.1)';
+                        matrixHtml += `<td style="background-color: ${backgroundColor}"><span class="similarity-value">${similarity}%</span></td>`;
                     }
-                }
-            }
-
-            // Create nodes
-            testNames.forEach((name, i) => {
-                const x = centerX + radius * Math.cos(i * 2 * Math.PI / n);
-                const y = centerY + radius * Math.sin(i * 2 * Math.PI / n);
-                matrixHtml += `<circle class="node" cx="${x}" cy="${y}" r="6" data-original-cx="${x}" data-original-cy="${y}"></circle>`;
-                matrixHtml += `<text class="node-label" x="${x}" y="${y + 15}">${name}</text>`;
+                });
+                matrixHtml += '</tr>';
             });
 
-            matrixHtml += '</svg></div>';
-            if (allTestNames.length > 5) {
-                matrixHtml += `<p>Showing 5 out of ${allTestNames.length} tests. See full list below for all tests.</p>`;
+            matrixHtml += '</table></div>';
+            if (allTestNames.length > 10) {
+                matrixHtml += `<p>Showing 10 out of ${allTestNames.length} tests. See full list below for all tests.</p>`;
             }
             return matrixHtml;
         }
 
-        function createColorLegend() {
-            let legendHtml = '<div class="color-legend"><span>Similarity: </span>';
-            for (let i = 0; i <= 100; i += 25) {
-                const backgroundColor = `hsl(${120 * i / 100}, 100%, ${40 + (i / 2)}%)`;
-                legendHtml += `<span class="legend-item" style="background-color: ${backgroundColor}">${i}%</span>`;
-            }
-            legendHtml += '</div>';
-            return legendHtml;
-        }
 
         function createSummarySection(reportData) {
             const totalTests = new Set(reportData.flatMap(entry => [entry['Test 1'].Name, entry['Test 2'].Name])).size;
@@ -365,7 +383,6 @@
 
             return `
                 <div class="summary-section">
-                    <h2 class="summary-title">Test Similarity Overview</h2>
                     <div class="summary-stats">
                         <div class="stat-item">
                             <div class="stat-value">${totalTests}</div>
@@ -381,23 +398,13 @@
                         </div>
                     </div>
                     ${createSimilarityMatrix(reportData)}
-                    ${createColorLegend()}
                 </div>
             `;
         }
 
-        function createFullTestList(reportData) {
-            const allTests = [...new Set(reportData.flatMap(entry => [entry['Test 1'].Name, entry['Test 2'].Name]))];
-            let listHtml = '<div class="full-test-list"><h3>Full List of Tests</h3><ol>';
-            allTests.forEach(test => {
-                listHtml += `<li>${test}</li>`;
-            });
-            listHtml += '</ol></div>';
-            return listHtml;
-        }
-
         function filterAndDisplayReports(threshold) {
             const reportContainer = document.getElementById("reportContainer");
+            const displayCountElement = document.getElementById("displayCount");
             reportContainer.innerHTML = ""; // Clear existing reports
             
             let displayedReports = 0;
@@ -408,7 +415,7 @@
                 }
             });
             
-            reportContainer.innerHTML += `<p>Displaying ${displayedReports} out of ${reportData.length} total comparisons.</p>`;
+            displayCountElement.textContent = `Displaying ${displayedReports} out of ${reportData.length} total comparisons`;
         }
 
         function initializeReport() {
@@ -416,8 +423,7 @@
             summarySection.innerHTML = createSummarySection(reportData);
 
             const fullTestListSection = document.getElementById('fullTestListSection');
-            fullTestListSection.innerHTML = createFullTestList(reportData);
-
+			const space = document.createElement('div');
             const similarityInput = document.getElementById("similarityThreshold");
             filterAndDisplayReports(parseFloat(similarityInput.value));
             

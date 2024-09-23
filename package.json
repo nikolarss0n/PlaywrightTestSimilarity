@@ -3,28 +3,35 @@
 	"version": "1.0.0",
 	"description": "A tool to compare and analyze e2e tests",
 	"main": "dist/index.js",
+	"type": "module",
 	"types": "dist/index.d.ts",
 	"bin": {
 		"e2e-test-comparison": "./bin/e2e-test-comparison.js"
 	},
 	"scripts": {
-		"build": "tsc",
+		"build": "npm run clean && npm run compile && npm run copy-assets",
+		"clean": "rm -rf dist && echo 'Cleaned dist directory'",
+		"compile": "tsc && echo 'TypeScript compilation completed'",
+		"copy-assets": "mkdir -p dist/reporters && echo 'Created dist/reporters directory' && npm run copy-hbs && npm run copy-css && npm run copy-js && echo 'Asset copying completed'",
+		"copy-hbs": "cp -v src/reporters/template.hbs dist/reporters/template.hbs || echo 'Failed to copy template.hbs'",
+		"copy-css": "cp -v src/reporters/styles.css dist/reporters/styles.css || echo 'Failed to copy styles.css'",
+		"copy-js": "cp -v src/reporters/script.js dist/reporters/script.js || echo 'Failed to copy script.js'",
+		"postbuild": "echo 'Build process completed' && ls -R dist",
+		"test-link": "npm link",
+		"test-generate": "npm run build && npm run test-link && e2e-test-comparison playwright-debug1.log",
 		"start": "node dist/index.js",
 		"dev": "ts-node src/index.ts",
 		"prepublishOnly": "npm run build",
 		"lint": "eslint . --ext .ts",
 		"test": "jest"
 	},
-	"keywords": [
-		"e2e",
-		"test",
-		"comparison",
-		"analysis"
-	],
+	"keywords": ["e2e", "test", "comparison", "analysis"],
 	"author": "Your Name",
 	"license": "MIT",
 	"dependencies": {
+		"@types/handlebars": "^4.1.0",
 		"commander": "^8.3.0",
+		"handlebars": "^4.7.8",
 		"openai": "^4.61.0"
 	},
 	"devDependencies": {
@@ -32,14 +39,12 @@
 		"@types/node": "^22.5.5",
 		"@typescript-eslint/eslint-plugin": "^5.5.0",
 		"@typescript-eslint/parser": "^5.5.0",
+		"copyfiles": "^2.4.1",
 		"eslint": "^8.4.0",
 		"jest": "^27.4.3",
 		"ts-jest": "^27.1.1",
 		"ts-node": "^9.1.1",
 		"typescript": "^4.2.3"
 	},
-	"files": [
-		"dist",
-		"bin"
-	]
+	"files": ["dist", "bin"]
 }
