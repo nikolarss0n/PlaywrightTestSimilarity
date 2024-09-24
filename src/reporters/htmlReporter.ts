@@ -2,9 +2,84 @@ import type { EvaluationReport } from "../services/openAIService";
 
 export class HtmlReporter {
 	private readonly cssStyles: string = `
+.test-case-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: rgb(215 252 3 / 0.9);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+}
+
+.test-case-title::after {
+    content: 'Collapse ▲';
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+}
+
+.test-case-title.collapsed::after {
+    content: 'Expand ▼';
+    transform: rotate(0deg);
+}
+
+        .test-columns {
+            display: flex;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .test-columns.collapsed {
+            max-height: 0;
+        }
+
+        .test-column {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .column-content {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .test-column:first-child {
+            border-right: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .test-column .column-content {
+            overflow-y: visible;
+            overflow-x: hidden;
+        }
+
+
+        .step-container {
+            display: flex;
+            overflow-y: auto;
+            mac0-height: 80vh;
+        }
+
+        .test-titles {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .test-title {
+            font-weight: bold;
+            color: rgb(215 252 3 / 0.9);
+        }
+            
         body {
             font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-            background-image: url('https://vehicle.static.prod.or.sixt-leasing.com/cms/whitelabel/2023-03/de_amg_en_home_hero_0.jpg');
+            background-image: url('/src/assets/images/Image.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -21,8 +96,8 @@ export class HtmlReporter {
             box-sizing: border-box;
         }
 
-        .card, .test-column, .threshold-input, .stat-item {
-            background: rgba(0, 0, 0, 0.6);
+        .card, .test-column, .threshold-input {
+            background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-radius: 20px;
@@ -63,23 +138,17 @@ export class HtmlReporter {
             color: rgb(215 252 3 / 0.9);
         }
 
-        .test-columns {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            overflow-x: auto;
-            padding-bottom: 10px;
-        }
-
-        .test-column {
-            flex: 1;
-            min-width: 300px;
-        }
-
+  
         .step-row {
-            padding: 10px;
+            padding: 10px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
+
+        .step-cell {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
 
         .matched-step {
             background-color: rgba(215, 252, 3, 0.2);
@@ -126,13 +195,54 @@ export class HtmlReporter {
             text-align: center;
         }
 
-        .summary-stats {
+       .summary-stats {
             display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 20px;
         }
 
-        .stat-value {
+        .stat-item {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 4px 30px rgba(0, 0, 0, 0.1),
+                inset 0 0 20px rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            margin-right: 10px;
+        }
+
+           .stat-item:last-child {
+            margin-right: 0; /* Remove right margin for the last stat-item */
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+            border-radius: 20px 20px 100% 100%;
+            pointer-events: none;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.2),
+                inset 0 0 30px rgba(255, 255, 255, 0.1);
+        }
+
+       .stat-value {
             font-size: 36px;
             font-weight: bold;
             color: rgb(215 252 3 / 0.9);
@@ -143,7 +253,7 @@ export class HtmlReporter {
             color: rgba(255, 255, 255, 0.7);
         }
 
-             .similarity-matrix {
+        .similarity-matrix {
             background-color: rgba(0, 0, 0, 0.8);
             border-radius: 20px;
             padding: 20px;
@@ -243,7 +353,7 @@ export class HtmlReporter {
                 .replace(/'/g, "&#039;");
         }
 
-        function createReportEntryHtml(entry) {
+           function createReportEntryHtml(entry) {
             const test1Title = entry["Test 1"]["Name"];
             const test1Steps = entry["Test 1"]["Steps"];
             const test2Title = entry["Test 2"]["Name"];
@@ -254,13 +364,19 @@ export class HtmlReporter {
             
             let reportHtml = "<div class='card'>";
             
-            reportHtml += \`<div class='test-case-title'>\${test1Title} vs \${test2Title}</div>\`;
-            reportHtml += "<div class='test-columns'>";
+            reportHtml += \`<div class='test-case-title collapsed' onclick='toggleComparison(this)'>
+                                <span>Similarity: \${similarity}%</span>
+                                <span>Compare Tests</span>
+                            </div>\`;
+            reportHtml += \`<div class='test-titles'>
+                                <span class='test-title'>\${escapeHtml(test1Title)}</span>
+                                <span class='test-title'>\${escapeHtml(test2Title)}</span>
+                            </div>\`;
+            reportHtml += "<div class='test-columns collapsed'>";
             
-            reportHtml += createTestStepsHtml(test1Title, test2Title, test1Steps, test2Steps, matchedSteps);
+            reportHtml += createTestStepsHtml(test1Steps, test2Steps, matchedSteps);
             
             reportHtml += "</div>"; // Close test-columns
-            reportHtml += \`<div class='test-case-footer'>Similarity: \${similarity}%</div>\`;
             
             if (mergeSuggestion) {
                 reportHtml += "<div class='merge-suggestion'><p>Merge Suggestion:</p>" + mergeSuggestion + "</div>";
@@ -271,49 +387,54 @@ export class HtmlReporter {
             return reportHtml;
         }
         
-        function createTestStepsHtml(title1, title2, steps1, steps2, matchedSteps) {
-            const maxLength = Math.max(steps1.length, steps2.length);
-            
-             let html = \`
-                <div class="test-column">
-                    <h3>\${escapeHtml(title1)}</h3>
-                    <div class="step-container">
-            \`;
-            
-            for (let i = 0; i < maxLength; i++) {
-                const step1 = steps1[i] || "----";
-                const isMatched = matchedSteps.some(pair => pair[0] === i && pair[1] === i);
-                const rowClass = isMatched ? "matched-step" : "";
-                
-                html += \`<div class="step-row \${rowClass}">
-                    <div class="step-cell">\${i + 1}. \${escapeHtml(step1)}</div>
-                </div>\`;
-            }
-            
-            html += \`
-                    </div>
-                </div>
-                <div class="test-column">
-                    <h3>\${escapeHtml(title2)}</h3>
-                    <div class="step-container">
-            \`;
-            
-            for (let i = 0; i < maxLength; i++) {
-                const step2 = steps2[i] || "----";
-                const isMatched = matchedSteps.some(pair => pair[0] === i && pair[1] === i);
-                const rowClass = isMatched ? "matched-step" : "";
-                
-                html += \`<div class="step-row \${rowClass}">
-                    <div class="step-cell">\${i + 1}. \${escapeHtml(step2)}</div>
-                </div>\`;
-            }
-            
-            html += \`
-                    </div>
-                </div>
-            \`;
-            
-            return html;
+        
+        function createTestStepsHtml(steps1, steps2, matchedSteps) {
+    const maxLength = Math.max(steps1.length, steps2.length);
+    
+    let html = \`
+    <div class="step-container">
+        <div class="test-column">
+            <div class="column-content">
+    \`;
+    
+    for (let i = 0; i < maxLength; i++) {
+        const step1 = steps1[i] || "----";
+        const isMatched = matchedSteps.some(pair => pair[0] === i && pair[1] === i);
+        const rowClass = isMatched ? "matched-step" : "";
+        
+        html += \`<div class="step-row \${rowClass}">
+            <div class="step-cell">\${i + 1}. \${escapeHtml(step1)}</div>
+        </div>\`;
+    }
+    
+    html += \`
+            </div>
+        </div>
+        <div class="test-column">
+            <div class="column-content">
+    \`;
+    
+    for (let i = 0; i < maxLength; i++) {
+        const step2 = steps2[i] || "----";
+        const isMatched = matchedSteps.some(pair => pair[0] === i && pair[1] === i);
+        const rowClass = isMatched ? "matched-step" : "";
+        
+        html += \`<div class="step-row \${rowClass}">
+            <div class="step-cell">\${i + 1}. \${escapeHtml(step2)}</div>
+        </div>\`;
+    }
+    
+    html += \`
+            </div>
+        </div>
+    </div>\`;
+    
+    return html;
+}
+
+        function toggleComparison(element) {
+            element.classList.toggle('collapsed');
+            element.nextElementSibling.nextElementSibling.classList.toggle('collapsed');
         }
 
      function createSimilarityMatrix(reportData) {
@@ -355,7 +476,7 @@ export class HtmlReporter {
         }
 
 
-        function createSummarySection(reportData) {
+      function createSummarySection(reportData) {
             const totalTests = new Set(reportData.flatMap(entry => [entry['Test 1'].Name, entry['Test 2'].Name])).size;
             const similarTests = reportData.filter(entry => entry.Similarity >= 70).length;
             const avgSimilarity = Math.round(reportData.reduce((sum, entry) => sum + entry.Similarity, 0) / reportData.length);

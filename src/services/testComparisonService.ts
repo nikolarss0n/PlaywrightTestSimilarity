@@ -105,17 +105,20 @@ export class TestComparisonService {
 		let updatedAction: string | null = currentAction;
 
 		if (updatedAction) {
+			// Remove "Interaction: " prefix if it exists
+			updatedAction = updatedAction.replace(/^Interaction: /, "");
+
 			if (apiCallsBuffer.length > 0) {
 				const apiSummary = this.summarizeApiCalls(apiCallsBuffer);
 				updatedAction += ` (${apiSummary})`;
-				apiCallsBuffer.length = 0; // Clear the buffer
+				apiCallsBuffer.length = 0;
 			}
 			filteredSteps.push(updatedAction);
 		} else if (apiCallsBuffer.length > 0) {
 			filteredSteps.push(
 				`API Calls: ${this.summarizeApiCalls(apiCallsBuffer)}`,
 			);
-			apiCallsBuffer.length = 0; // Clear the buffer
+			apiCallsBuffer.length = 0;
 		}
 	}
 
@@ -179,7 +182,7 @@ export class TestComparisonService {
 	private extractInteractionInfo(step: string): string {
 		const action = this.getInteractionType(step);
 		const target = this.extractInteractionTarget(step);
-		return `${action} ${target}`;
+		return `${action} ${target}`; // Removed "Interaction: " prefix
 	}
 
 	private getInteractionType(step: string): string {
